@@ -2,7 +2,9 @@
 doctype html
 html
 	include pug/_header.pug
-	body
-		main
-			h1 Hello sir
+	body#index
+		main.container
+			div.row#intro
+				img.col.m8.offset-m2.s12( src=site.system.url + "assets/sandbox-logo.svg" )
+				p.col.m6.offset-m3.s12.flow-text Sandbox is a mobile society of trailblazers using technology and conversation to create a world of our design. This is an eclectic community of nomads, adventurers, power brokers, politicians and ambitious entrepreneurs.
 	include pug/_footer.pug

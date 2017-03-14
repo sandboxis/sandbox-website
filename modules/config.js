@@ -1,22 +1,24 @@
+const ip = require( 'ip' )
+
 module.exports = {
 	// Identity variables used in pug templates
 	identity: {
-		title: "Website",
-		desc: "Description of website",
-		"logo": "logo.jpg"
+		title: "Sandbox",
+		desc: "",
+		"logo": "/assets/sandbox_logo_rgb-500x113.png"
 	},
 	// System vars managing some pug elements as well as file paths
 	system: {
-		public: __dirname + '/../public/',
+		public: __dirname + '/../docs/',
 		source: __dirname + '/../src/',
-		url: process.env.local ? 'http://localhost:3000/' : 'https://www.liveurl.com',
+		url: process.env.local ? 'http://' + ip.address() + ':3000/' : 'https://actuallymentor.github.io/sandbox-website/',
 		gverification: undefined,
 		year: new Date().getFullYear()
 	},
 	// About the author. Change this to your own unless you went me to get credit for your page of course... <3
 	author: {
-		firstname: "Mentor",
-		lastname: "Palokaj",
+		firstname: "Sandbox",
+		lastname: "Network",
 		email: "mentor@palokaj.co",
 		twitter: "@actuallymentor",
 		// facebook profile id, used for retargeting ad permissions
