@@ -4,6 +4,8 @@ $sandbox-color: #08b7e4;
 /* Font */
 @import url('https://fonts.googleapis.com/css?family=Roboto:300');
 
+/* Global style rules */
+
 a { 
 	color: $sandbox-color;
 	text-decoration: none;
@@ -47,6 +49,15 @@ main {
 	padding: 10px;
 	opacity: 0.6;
 	font-size: 13px;
+}
+
+/* Widespread rules */
+#logo {
+	transition: 0.3s;
+	&:hover {
+		transition: 0.3s;
+		filter: drop-shadow( 2px 8px 5px rgba(0,0,0, 0.2) );
+	}
 }
 
 /* Import grid system */
