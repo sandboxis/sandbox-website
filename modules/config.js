@@ -13,6 +13,7 @@ module.exports = {
 		source: __dirname + '/../src/',
 		url: process.env.local ? 'http://' + ip.address() + ':3000/' : 'https://actuallymentor.github.io/sandbox-website/',
 		gverification: undefined,
+		timestamp: new Date().getTime(),
 		year: new Date().getFullYear()
 	},
 	// About the author. Change this to your own unless you went me to get credit for your page of course... <3
