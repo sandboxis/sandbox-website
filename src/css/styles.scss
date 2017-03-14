@@ -4,6 +4,18 @@ $sandbox-color: #08b7e4;
 /* Font */
 @import url('https://fonts.googleapis.com/css?family=Roboto:300');
 
+a { 
+	color: $sandbox-color;
+	text-decoration: none;
+	transition: 0.3s;
+	&:hover {
+		transition: 0.3s;
+		text-shadow: 2px 8px 5px rgba(0, 0, 0, 0.3);
+	}
+}
+
+.row { max-width: 100%; }
+
 body {
 	// Override browser default padding and margin
 	margin: 0;
@@ -45,3 +57,9 @@ main {
 
 /* Get history page styling */
 @import "history";
+
+/* Import join/application styling */
+@import "join";
+
+/* Contact */
+@import "contact";
