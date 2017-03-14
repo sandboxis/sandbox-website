@@ -1,0 +1,45 @@
+footer#footer
+	div © Copyright #{site.system.year} #{site.author.firstname} #{site.author.lastname}
+script( type="application/ld+json" ).
+	{
+		"@context": "http://schema.org",
+		"@type": "Article",
+		"mainEntityOfPage": {
+			"@type": "WebPage",
+			"@id": "#{page.url}"
+		},
+		"headline": "#{page.title}",
+		"image": {
+			"@type": "ImageObject",
+			"url": "#{site.system.url}#{page.featuredimg}",
+			"height": "696px",
+			"width": "696px"
+		},
+		"datePublished": "#{page.published}",
+		"dateModified": "#{page.updated}",
+		"author": {
+			"@type": "Person",
+			"name": "#{site.author.firstname} #{site.author.lastname}",
+			"url": "#{site.author.url}"
+		},
+		"publisher": {
+			"@type": "Organization",
+			"name": "#{site.identity.title}",
+			"url": "#{site.system.url}",
+			"logo": {
+				"@type": "ImageObject",
+				"url": "#{site.identity.logo}",
+				"width": "60px",
+				"height": "600px"
+			}
+		},
+		"description": "#{page.desc}"
+	}
+script.
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		ga('create', "#{site.track.ga}", 'auto');
+		ga('require', 'displayfeatures');
+		ga('send', 'pageview');

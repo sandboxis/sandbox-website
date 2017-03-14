@@ -1,0 +1,36 @@
+$background-color: #efefef;
+
+/* Font */
+@import url('https://fonts.googleapis.com/css?family=Roboto:300');
+
+body {
+	// Override browser default padding and margin
+	margin: 0;
+	padding: 0;
+	// Set font globally
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	// Sticky the footer
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+	// Backgorund color
+	background: $background-color;
+}
+
+main {
+	// make footer sticky
+	flex: 1 0 auto;
+	// Vertically align content
+	display: flex;
+	align-items: center;
+  	justify-content: center;
+}
+
+#footer {
+	// make the copyright notics less in your face
+	text-align: center;
+	padding: 10px;
+	opacity: 0.6;
+	font-size: 13px;
+}
