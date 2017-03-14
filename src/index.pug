@@ -1,4 +1,4 @@
-- const page = { title: 'Home', desc: 'Home page', published: '2017-01-01', url: '/', featuredimg: '/image.jpg' }
+- const page = { title: 'Home', desc: 'Home page', published: '2017-01-01', url: '/', featuredimg: '/assets/sandbox-logo.svg' }
 doctype html
 html
 	include pug/_header.pug
@@ -7,4 +7,8 @@ html
 			div.row#intro
 				img.col.m6.offset-m3.s10.offset-s1( src=site.system.url + "assets/sandbox-logo.svg" )
 				p.col.m6.offset-m3.s12.flow-text Sandbox is a mobile society of trailblazers using technology and conversation to create a world of our design. This is an eclectic community of nomads, adventurers, power brokers, politicians and ambitious entrepreneurs.
+				div.col.m12.s12#links
+					a( href="/history.html" ) Our History
+					span |
+					a( href="/history.html" ) Join Us
 	include pug/_footer.pug

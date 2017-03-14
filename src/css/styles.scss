@@ -1,4 +1,5 @@
 $background-color: #efefef;
+$sandbox-color: #08b7e4;
 
 /* Font */
 @import url('https://fonts.googleapis.com/css?family=Roboto:300');
@@ -6,7 +7,6 @@ $background-color: #efefef;
 body {
 	// Override browser default padding and margin
 	margin: 0;
-	padding: 0;
 	// Set font globally
 	font-family: 'Roboto', sans-serif;
 	font-weight: 300;
@@ -26,6 +26,7 @@ main {
 	align-items: center;
 	flex-direction: column;
   	justify-content: center;
+  	padding: 50px 0;
 }
 
 #footer {
@@ -41,3 +42,6 @@ main {
 
 /* Get the index styling */
 @import "index";
+
+/* Get history page styling */
+@import "history";

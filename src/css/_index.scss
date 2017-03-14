@@ -6,4 +6,20 @@
 			margin-top: 50px;
 		}
 	}
+	#links {
+		text-align: center;
+		a { 
+			color: $sandbox-color;
+			text-decoration: none;
+			transition: 0.3s;
+			&:hover {
+				transition: 0.3s;
+				text-shadow: 2px 8px 5px rgba(0, 0, 0, 0.3);
+			}
+		}
+		span {
+			color: #d0d0d0;
+			margin: 10px;
+		}
+	}
 }
