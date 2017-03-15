@@ -11,7 +11,7 @@ module.exports = {
 	system: {
 		public: __dirname + '/../docs/',
 		source: __dirname + '/../src/',
-		url: process.env.local ? 'http://' + ip.address() + ':3000/' : 'https://actuallymentor.github.io/sandbox-website/',
+		url: process.env.local ? 'http://' + ip.address() + ':3000/' : 'http://sandbox.is/',
 		gverification: undefined,
 		timestamp: new Date().getTime(),
 		year: new Date().getFullYear()
