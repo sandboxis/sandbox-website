@@ -1,0 +1,19 @@
+- const page = { title: 'About', desc: 'About the Sandbox community', published: '2017-01-01', url: '/', featuredimg: '/image.jpg' }
+doctype html
+html
+	include pug/_header.pug
+	body
+		main.container
+			div.row#about.page
+				a( href=site.system.url )
+					img.col.m4.offset-m4.s12#logo( src=site.system.url + "assets/sandbox-logo.svg" )
+				div.col.m6.offset-m3.s12.flow-text
+					p Sandbox is a mobile society of trailblazers using technology and conversation to create a world of our design. We are an eclectic community of nomads, entrepreneurs, journalists, academics, politicians, and influencers from over 100 countries.We are a digitally connected, democratic family co-creating community among the next generation of leaders while leveraging our collective resources to meet the greataest challenges of our generation. Our values of openness, authenticity, playfulness, audacity, and trust  characterize every interaction in the community.
+
+					p From San Francisco to Singapore you’ll find us rushing through airports we’ve never seen before, crashing on couches we’ve never known before and laughing through dinners with friends we’ve never met before. Home to us is not the building we live in, it’s the people we can’t live without.
+
+					p We represent the world’s most visible pioneers of the Forbes list of 30 under 30. We have been featured on the front covers of Wired, Fast Company, Forbes, the Boston Globe and covered in the New York Times, BusinessWeek, Financial Times, Washington Post, CNN, ABC Inc Magazine, and Vogue. We’ve shared our experiences and have spoken at TED, the White House, the World Economic Forum, the Clinton Global Initiative, and the United Nations. Despite these accolades, we gather as a community not because of professional accomplishment but rather our generation’s deeply personal quests, an inner journey which unlocks the full potential of our members to contribute to the world we live in. 
+
+					p Sandbox is our opportunity to move the needle, our chance to establish new norms based on values and ambition rather than heritage, ethnicity or geography. This is our chance to co-create the world we inherit. Join us.
+
+	include pug/_footer.pug

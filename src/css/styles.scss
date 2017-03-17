@@ -18,6 +18,12 @@ a {
 
 .row { max-width: 100%; }
 
+.page {
+	#logo {
+		margin-bottom: 50px;
+	}
+}
+
 body {
 	// Override browser default padding and margin
 	margin: 0;
