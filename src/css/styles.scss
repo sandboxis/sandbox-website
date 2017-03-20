@@ -9,11 +9,6 @@ $sandbox-color: #08b7e4;
 a { 
 	color: $sandbox-color;
 	text-decoration: none;
-	transition: 0.3s;
-	&:hover {
-		transition: 0.3s;
-		text-shadow: 2px 8px 5px rgba(0, 0, 0, 0.3);
-	}
 }
 
 .row { max-width: 100%; }
