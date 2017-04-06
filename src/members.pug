@@ -1,0 +1,31 @@
+- const page = { title: 'Members', desc: 'Member communications', published: '2017-01-01', url: '/', featuredimg: '/assets/sandbox-logo.svg' }
+doctype html
+html
+	include pug/_header.pug
+	body#members
+		main.container
+			div.row#intro
+				a( href=site.system.url )
+					img.col.m4.offset-m4.s6.offset-s3#logo( src=site.system.url + "assets/sandbox-logo.svg" )
+				h1.col.m6.offset-m3.s10.offset-s1 Communicating with other members
+				div.col.m6.offset-m3.s12.flow-text
+					p There are 3 official Sandbox communication platforms:
+					ul
+						li The Facebook group
+						li The Newsletter
+						li The Slack
+					p Once you become a member you will be added to all 3.
+					h2 Goal of the facebook group
+					p The Facebook group used to be the central hub to much of the community communication. It is however quite hard to structurally keep track of so much awesomeness on a platform like Facebook.
+					h2 Goal of the newsletter
+					p The newsletter keeps you up to date on what is happening in the community. We send around updates on what HQ has been working on and news from our members.
+					h2 Goal of the Slack
+					p Slack is a chat-style application where we can create groups, channels and person-to-person conversations.
+					p Slack is used for member-to-member communication. In the slack you can talk to Sandbox hubs or to members indivudually.. Here is how it works:
+					ul
+						li As a member you will receive a personal invite to join the Slack
+						li Once you finish your account you can log in through your browser
+						li We recommend downloading the  <a href="https://slack.com/downloads/">Slack</a> desktop app ( or the all in one <a href="http://meetfranz.com/">Franz</a> app )
+						li We recommend downloading the slack <a href="https://slack.com/downloads/">mobile app</a>
+					p The slack is populated with channels for each Hub.
+	include pug/_footer.pug
