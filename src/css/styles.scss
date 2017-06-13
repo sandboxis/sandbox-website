@@ -2,7 +2,7 @@ $background-color: #efefef;
 $sandbox-color: #08b7e4;
 
 /* Font */
-@import url('https://fonts.googleapis.com/css?family=Roboto:300');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,700');
 
 /* Global style rules */
 
@@ -11,7 +11,9 @@ a {
 	text-decoration: none;
 }
 
-.row { max-width: 100%; }
+.row {
+	max-width: 100%;
+}
 
 .page {
 	#logo {

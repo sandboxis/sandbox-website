@@ -1,0 +1,28 @@
+- const page = { title: 'Manifesto', desc: 'Manifesto page', published: '2017-05-13', url: '/', featuredimg: '/image.jpg' }
+doctype html
+html
+	include pug/_header.pug
+	body
+		main.container
+			div.row#history.page
+				a( href=site.system.url )
+					img.col.m4.offset-m4.s12#logo( src=site.system.url + "assets/sandbox-logo.svg" )
+				div.col.m6.offset-m3.s12.flow-text
+					p.
+						 #[b We trust] each other to be vulnerable and authentic.
+						 #[b We give] our energy and time.
+						 #[b We openly share] to inspire and empower each other.
+						 #[b We pay it forward]  to help one another reach our dreams.
+						 #[b We make magic] by uniting art and science.
+						 #[b We engineer serendipity] by curating beauty and purpose.
+						 #[b We redefine home]  as the people we can't live without.
+						 #[b We redefine work] with new modes and tools for collaboration.
+						 #[b We embrace diversity]  of origis, diciplines, and thought.
+						 #[b We question] ourselves and the world to address the fundamental challenges of our time.
+						 #[b We accelerate change] by unlocking human potential.
+
+					p Sandbox is or generation's opportunity to move the needle, to establish new norms based on values and purpose.
+
+					p This is our chance to co-create the world we inherit.
+
+	include pug/_footer.pug
