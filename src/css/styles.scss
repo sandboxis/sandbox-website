@@ -6,6 +6,10 @@ $sandbox-color: #08b7e4;
 
 /* Global style rules */
 
+iframe { 
+	border: none;
+ }
+
 a { 
 	color: $sandbox-color;
 	text-decoration: none;
