@@ -5,16 +5,27 @@ import styles from '../css/styles.scss'
 if (document.getElementById('store')) window.location.href = 'https://sandbox-store.squarespace.com/'
 if (document.getElementById('oncommunity')) window.location.href = 'https://sandbox-store.squarespace.com/shop/on-community-a-modern-manifesto'
 
-// Make the manifesto video clickable
+// Resize the video to the Vimeo aspect ratio
+const resizeVideo = ( video = document.getElementById( 'manifestovideo' ) ) => { 
+	video.height = video.offsetWidth/1.7777777778
+ }
+
+
 window.onload = f => { 
+	// Make the manifesto video clickable
 	const manifesto = document.getElementById( 'manifesto' )
 	manifesto.addEventListener( 'click', e => {
-		const video = document.createElement( 'iframe' )
-		video.src = "https://player.vimeo.com/video/233941130?title=0&autoplay=1"
-		video.width = '100%'
-		console.log( manifesto.childNodes )
-		manifesto.removeChild( manifesto.childNodes[0] )
-		manifesto.appendChild( video )
-		video.height = video.offsetWidth/1.7777777778
+		manifesto.innerHTML = `<iframe
+			id="manifestovideo"
+			src="https://player.vimeo.com/video/233941130?title=0&autoplay=1"
+			width="100%" height="auto"
+			frameborder="0"
+			webkitallowfullscreen mozallowfullscreen allowfullscreen>
+		</iframe>`
+		// Resize after click
+		resizeVideo( )
 	 } )
  }
+
+// Adjust video size when the window resizes
+window.onresize = f => resizeVideo( )
