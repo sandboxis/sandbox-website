@@ -6,7 +6,9 @@ if (document.getElementById('store')) window.location.href = 'https://sandbox-st
 if (document.getElementById('oncommunity')) window.location.href = 'https://sandbox-store.squarespace.com/shop/on-community-a-modern-manifesto'
 
 // Resize the video to the Vimeo aspect ratio
-const resizeVideo = ( video = document.getElementById( 'manifestovideo' ) ) => { 
+const resizeVideo = ( ) => { 
+	const video = document.getElementById( 'manifestovideo' )
+	if ( !video ) return
 	video.height = video.offsetWidth/1.7777777778
  }
 
