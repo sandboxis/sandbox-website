@@ -67,6 +67,20 @@ main {
 	}
 }
 
+#links {
+	margin-top: 50px;
+	text-align: center;
+
+	span {
+		color: #d0d0d0;
+		margin: 10px;
+	}
+
+	a {
+		padding: 15px 10px;
+	}
+}
+
 /* Import grid system */
 @import "gridsystem";
 

@@ -2,11 +2,11 @@
 	p {
 		text-align: center;
 	}
-	#links {
-		text-align: center;
-		a {
-			padding: 15px 10px;
-			display: inline-block;
+	.container {
+		#links {
+			a {
+				display: inline-block;
+			}
 		}
 	}
 }

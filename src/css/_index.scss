@@ -1,15 +1,24 @@
 #index {
 	#intro {
-		margin-top: 50px;
+		margin-top: 30px;
 		p {
 			text-align: center;
 		}
 	}
-	#links {
+	#description {
+		margin-top: 50px;
+	}
+	#values {
 		text-align: center;
-		span {
-			color: #d0d0d0;
-			margin: 10px;
+		margin-top: 30px;
+
+		ul {
+			list-style-type: none;
+			padding: 0;
+
+			li {
+				margin: 10px 0;
+			}
 		}
 	}
 	#manifesto { 

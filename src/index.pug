@@ -7,17 +7,16 @@ html
 			div.row#intro
 				a( href=site.system.url )
 					img.col.m6.offset-m3.s10.offset-s1#logo( src=site.system.url + "assets/sandbox-logo.svg" )
+				p.col.m8.offset-m2.s12.flow-text#description We are an eclectic community of nomads, entrepreneurs, journalists, academics, politicians, artists, and indomitable misfits from over 100 countries. Together we seek to develop our authentic selves, form meaningful relationships, discover resources to live fulfilling lives, and to lead significant impact on the world around us. 
 				div#manifesto.col.m6.offset-m3.s12
 					img( src="/assets/manifesto-placeholder.jpg" )
-				p.col.m6.offset-m3.s12.flow-text Sandbox is a mobile society of trailblazers using technology and conversation to create a world of our design. We are an eclectic community of nomads, entrepreneurs, journalists, academics, politicians, and influencers from over 100 countries.
-				div.col.m12.s12#links
-					a( href="https://medium.com/sandbox" ) Blog
-					span |
-					a( href=site.system.url + "history.html" ) Our History
-					span |
-					a( href=site.system.url + "manifesto.html" ) Manifesto
-					span |
-					a( href=site.system.url + "about.html" ) About
-					span |
-					a( href=site.system.url + "join.html" ) Join Us
+				div.col.m8.offset-m2.s12.flow-text#values
+					ul
+						li We endeavor to create positive value to our world.
+						li We believe that our impact is amplified when supporting others.
+						li We are present with ourselves and one another.
+						li We are generous with our time, resources, and expertise.
+						li We strive for humility, empathy, and authenticity in our connections.
+						li We respect the safety and diversity of our community.
+		include pug/_footer-links.pug
 	include pug/_footer.pug
