@@ -38,7 +38,11 @@ mailchimp.get( `/lists/${mainlistid}` ).then( res => {
 	console.log( `${knownmembers.length} members have a known name` )
 	// Normalise the member data for templating
 	return knownmembers.map( member => ( { 
-		name: member.merge_fields.FNAME
+		name: member.merge_fields.FNAME,
+		hub: member.merge_fields.HUB || 'Unknown',
+		slack: member.merge_fields.SLACK || 'Unknown',
+		bio: member.merge_fields.BIO || 'Mysterious',
+		help: member.merge_fields.HELP || 'Unknown'
 	} ) )
 } )
 .then( JSON.stringify )
