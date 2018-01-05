@@ -39,10 +39,11 @@ mailchimp.get( `/lists/${mainlistid}` ).then( res => {
 	// Normalise the member data for templating
 	return knownmembers.map( member => ( { 
 		name: member.merge_fields.FNAME,
-		hub: member.merge_fields.HUB || 'Unknown',
-		slack: member.merge_fields.SLACK || 'Unknown',
-		bio: member.merge_fields.BIO || 'Mysterious',
-		help: member.merge_fields.HELP || 'Unknown'
+		hub: member.merge_fields.HUB,
+		slack: member.merge_fields.SLACK,
+		bio: member.merge_fields.BIO,
+		help: member.merge_fields.HELP,
+		linkedin: member.merge_fields.LINKEDIN
 	} ) )
 } )
 .then( JSON.stringify )
