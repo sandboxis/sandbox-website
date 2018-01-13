@@ -1,0 +1,21 @@
+- const page = { title: 'Media', desc: 'Sandbox Media', published: '2017-01-01', url: '/', featuredimg: '/image.jpg' }
+doctype html
+html
+  include pug/_header.pug
+  body
+    main.container
+      div.row.page
+        a( href=site.system.url )
+          img.col.m4.offset-m4.s12#logo( src=site.system.url + "assets/sandbox-logo.svg" )
+        div.col.m6.offset-m3.s12.flow-text
+          h4 Sandbox Media
+          ul
+            li
+              a( href=site.system.url + "donation.html" ) Donation of the Sandbox brand assets (Sandbox)
+            li
+              a( href="http://www.lemonde.fr/technologies/visuel/2014/03/28/sandbox-le-reseau-des-elites-connectees-qui-veulent-changer-le-monde_4385947_651865.html" ) Sandbox, le réseau des élites connectées qui veulent changer le monde (Le Monde)
+            li
+              a( href="https://www.youtube.com/watch?v=YCrKAWhXIyo" ) Sandbox Network and Bloomberg Businessweek Announce Partnership (Bloomberg Businessweek)
+
+  include pug/_footer-links.pug 
+  include pug/_footer.pug
