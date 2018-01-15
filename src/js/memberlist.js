@@ -37,11 +37,11 @@ export const htmlify = members => {
 							${ members[i].name } ${ members[i].hub ? ` (${ members[i].hub })` : '' }
 						</li>`
 		// Add the member bio if if exists
-		available +=  members[i].bio ? `<li style="font-style: italic;">${ members[i].bio }</li>` : ''
+		available +=  members[i].bio ? `<li style="font-style: italic; margin: 5px 0;">${ members[i].bio }</li>` : ''
 
 		// Add slack and linkedin if they exist ( on the same line )
 		available += members[i].slack || members[i].linkedin ? `<li>
-																	${ members[i].slack ? `Slack: ${ members[i].slack }` : '' }
+																	${ members[i].slack ? `Slack: ${ members[i].slack.indexOf( '@' ) == -1 ? '@' : '' }${ members[i].slack }` : '' }
 																	${ members[i].linkedin ? `${ members[i].slack ? ', ' : '' } <a href=${members[i].linkedin}>Linkedin</a>` : ''}
 																</li>` : ''
 		available += members[i].help ? `<li>Can help with: ${ members[i].help }</li>` : ''
