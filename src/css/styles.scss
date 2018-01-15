@@ -68,9 +68,11 @@ main {
 }
 
 #links {
-	margin-top: 50px;
 	text-align: center;
-
+	#cr {
+		color: black;
+		opacity: 0.8;
+	}
 	span {
 		color: #d0d0d0;
 		margin: 10px;

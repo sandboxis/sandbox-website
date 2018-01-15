@@ -28,4 +28,10 @@
 			width: 100%;
 		 }
 	 }
+	/* make the index fit the screen better on non-retina hd screens */
+	@media screen and ( min-width: 1024px ) and ( max-width: 1920px ) {
+		.container {
+			zoom: 0.8;
+		}
+	}
 }
