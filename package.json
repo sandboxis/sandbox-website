@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "local=true NODE_ENV=development webpack -d --progress --watch",
     "import-mailchimp": "node modules/import-mailchimp.js",
-    "build": "NODE_ENV=production webpack -p --progress"
+    "build": "NODE_ENV=production webpack -p --progress",
+    "deploy": "node modules/import-mailchimp.js && NODE_ENV=production webpack -p --progress && git add * && git commit -am 'Automated member database deployment' && git push"
   },
   "repository": {
     "type": "git",
