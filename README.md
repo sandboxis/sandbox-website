@@ -46,7 +46,7 @@ The final build version is compiled to the docs/ folder.
 The member database is imported from mailchimp. You can't do this unless you have an API key to the account. If you do and want to update the members page:
 
 ```shell
-npm run import-mailchimp
+npm run update
 ```
 
 For this to work you need to have a .env file in the root of your repository filled with:
