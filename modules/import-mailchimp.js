@@ -7,6 +7,9 @@ const fs = require( 'fs' )
 // Import api lib
 const Mailchimp = require( 'mailchimp-api-v3' )
 
+// Import slack auto-invite
+const slack = request( './slack-invite.js' )
+
 // Check for the api key
 if ( !process.env.mcapikey ) return console.log( 'No API key was found. Please add one in your .env file. See the documentation of the dotenv package.' )
 
@@ -50,8 +53,9 @@ mailchimp.get( `/lists/${mainlistid}` ).then( res => {
 .then( members => { 
 	return new Promise( ( resolve, reject ) => {
 		fs.writeFile( `${ __dirname }/../src/assets/members.json`, members, err => { 
-			err ? reject( err ) : resolve(  )
+			err ? reject( err ) : resolve( members )
 		} )
 	} )
-} ).then( f => console.log( 'Template generation complete' ) )
+} )
+.then( members => console.log( 'Template generation complete', members.length ) )
 .catch( err => console.log( err ) )
