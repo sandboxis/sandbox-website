@@ -1,3 +1,6 @@
+# Ignore the deployment folder
+docs/*
+
 # Environment variables
 .env
 
