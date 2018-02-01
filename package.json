@@ -40,6 +40,8 @@
     "postcss-loader": "^1.2.2",
     "pre-build-webpack": "^0.1.0",
     "pug": "^2.0.0-beta6",
+    "request": "^2.83.0",
+    "request-promise-native": "^1.0.5",
     "sass-loader": "^4.1.1",
     "style-loader": "^0.13.1",
     "watch": "^1.0.1",

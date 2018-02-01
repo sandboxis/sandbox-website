@@ -21,7 +21,8 @@ const mainlistid = process.env.mainlistid
 const mainlistname = process.env.mainlistname
 
 // Check if the list matches the assumptions
-mailchimp.get( `/lists/${mainlistid}` ).then( res => { 
+mailchimp.get( `/lists/${mainlistid}` )
+.then( res => { 
 
 	// Check if we are working on the right list
 	if ( !( res.name == mainlistname ) ) throw new Error( `List name is not ${mainlistname} but ${res.name}` )
@@ -33,12 +34,18 @@ mailchimp.get( `/lists/${mainlistid}` ).then( res => {
 		count: 99999999, // Arbitrarily large number so we get all members
 	} )
 
-} ).then( db => { 
+} )
+.then( db => { 
 	// Remove entries without a name
 	console.log( `${db.members.length} total imported members` )
 	return db.members.filter( member => member.merge_fields.FNAME ? true : false )
-} ).then( knownmembers => { 
-	console.log( `${knownmembers.length} members have a known name` )
+} )
+.then( knownmembers => {
+	// Invite everyone who has not set their slack handle and return the member array for the next operation
+	return Promise.all( knownmembers.map( member => member.merge_fields.SLACK ? Promise.resolve( true ) : slack( member.email_address ) ) ).then( f => knownmembers )
+} )
+.then( knownmembers => { 
+	console.log( `${knownmembers.length} members have been invited to slack` )
 	// Normalise the member data for templating
 	return knownmembers.map( member => ( { 
 		name: member.merge_fields.FNAME,
@@ -57,6 +64,5 @@ mailchimp.get( `/lists/${mainlistid}` ).then( res => {
 		} )
 	} )
 } )
-// .then( members => members.map( member => slack( member. ) ) )
-.then( members => console.log( 'Template generation complete', members[0], members[1] ) )
+.then( members => console.log( 'Template generation complete' ) )
 .catch( err => console.log( err ) )
