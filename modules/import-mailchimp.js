@@ -58,6 +58,7 @@ mailchimp.get( `/lists/${mainlistid}` )
 } )
 .then( JSON.stringify )
 .then( members => { 
+	console.log( `Writing ${members.length} members to JSON` )
 	return new Promise( ( resolve, reject ) => {
 		fs.writeFile( `${ __dirname }/../src/assets/members.json`, members, err => { 
 			err ? reject( err ) : resolve( members )
