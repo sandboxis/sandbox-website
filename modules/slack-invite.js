@@ -30,6 +30,7 @@ const invite = email => (
 		url: 'https://slack.com/api/users.admin.invite?'
 		params: `token=${process.env.slackkey}&email=${email}&channels=C4VJG91D0,C4UTYNXCZ,C5JH5Q0SV,C5K2A4NDR,C5P2TFVQW,C5K77V8J1&C5KU4DRHU&resend=true`
 	}
+	// This is a promise so the function returns a promise
 	return req( 'get', `${request.url}${request.params}` )
 )
 
