@@ -1,6 +1,18 @@
 footer#footer
-	div © Copyright #{site.system.year} #{site.author.firstname} - 
-		a( href=site.system.url + "contact.html" ) Contact us
+	div#links
+		a( href=site.system.url + "members.html" ) Member database
+		span | 
+		a( href="https://medium.com/sandbox" ) Blog
+		span |
+		a( href=site.system.url + "manifesto.html" ) Manifesto
+		span |
+		a( href=site.system.url + "about.html" ) About
+		span |
+		a( href=site.system.url + "join.html" ) Join
+		span |
+		a( href=site.system.url + "contact.html" ) Contact
+	div#cr
+		span © Copyright #{site.system.year} #{site.author.firstname}
 script( type="application/ld+json" ).
 	{
 		"@context": "http://schema.org",
