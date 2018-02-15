@@ -41,7 +41,7 @@ mailchimp.get( `/lists/${mainlistid}` )
 	return db.members.filter( member => member.merge_fields.FNAME ? true : false )
 } )
 .then( knownmembers => { 
-	console.log( `${knownmembers.length} members have been invited to slack` )
+	console.log( `${knownmembers.length} members will be transformed` )
 	// Normalise the member data for templating
 	return {
 		known: knownmembers.map( member => ( { 
