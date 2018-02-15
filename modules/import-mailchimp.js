@@ -43,26 +43,29 @@ mailchimp.get( `/lists/${mainlistid}` )
 .then( knownmembers => { 
 	console.log( `${knownmembers.length} members have been invited to slack` )
 	// Normalise the member data for templating
-	return knownmembers.map( member => ( { 
-		name: member.merge_fields.FNAME,
-		hub: member.merge_fields.HUB,
-		slack: member.merge_fields.SLACK,
-		bio: member.merge_fields.BIO,
-		help: member.merge_fields.HELP,
-		linkedin: member.merge_fields.LINKEDIN
-	} ) )
+	return {
+		known: knownmembers.map( member => ( { 
+			name: member.merge_fields.FNAME,
+			hub: member.merge_fields.HUB,
+			slack: member.merge_fields.SLACK,
+			bio: member.merge_fields.BIO,
+			help: member.merge_fields.HELP,
+			linkedin: member.merge_fields.LINKEDIN
+		} ) ),
+		raw: knownmembers
+	}
 } )
 .then( members => { 
-	console.log( `Writing ${members.length} members to JSON` )
+	console.log( `Writing ${members.known.length} members to JSON` )
 	return new Promise( ( resolve, reject ) => {
-		fs.writeFile( `${ __dirname }/../src/assets/members.json`, JSON.stringify( members ), err => { 
-			err ? reject( err ) : resolve( members )
+		fs.writeFile( `${ __dirname }/../src/assets/members.json`, JSON.stringify( members.known ), err => { 
+			err ? reject( err ) : resolve( members.raw )
 		} )
 	} )
 } )
 .then( members => {
 	// Invite everyone who has not set their slack handle and return the member array for the next operation
-	return Promise.all( members.map( member => member.merge_fields.SLACK ? Promise.resolve( true ) : slack( member.email_address ) ) ).then( f => members )
+	return Promise.all( members.map( member => member.merge_fields.SLACK ? Promise.resolve( true ) : slack( member.email_address ) ) )
 } )
-.then( members => console.log( 'Template generation complete' ) )
+.then( f => console.log( 'Template generation complete' ) )
 .catch( err => console.log( err ) )
