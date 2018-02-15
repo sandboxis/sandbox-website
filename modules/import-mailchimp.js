@@ -40,10 +40,6 @@ mailchimp.get( `/lists/${mainlistid}` )
 	console.log( `${db.members.length} total imported members` )
 	return db.members.filter( member => member.merge_fields.FNAME ? true : false )
 } )
-.then( knownmembers => {
-	// Invite everyone who has not set their slack handle and return the member array for the next operation
-	return Promise.all( knownmembers.map( member => member.merge_fields.SLACK ? Promise.resolve( true ) : slack( member.email_address ) ) ).then( f => knownmembers )
-} )
 .then( knownmembers => { 
 	console.log( `${knownmembers.length} members have been invited to slack` )
 	// Normalise the member data for templating
@@ -56,14 +52,17 @@ mailchimp.get( `/lists/${mainlistid}` )
 		linkedin: member.merge_fields.LINKEDIN
 	} ) )
 } )
-.then( JSON.stringify )
 .then( members => { 
 	console.log( `Writing ${members.length} members to JSON` )
 	return new Promise( ( resolve, reject ) => {
-		fs.writeFile( `${ __dirname }/../src/assets/members.json`, members, err => { 
+		fs.writeFile( `${ __dirname }/../src/assets/members.json`, JSON.stringify( members ), err => { 
 			err ? reject( err ) : resolve( members )
 		} )
 	} )
+} )
+.then( members => {
+	// Invite everyone who has not set their slack handle and return the member array for the next operation
+	return Promise.all( members.map( member => member.merge_fields.SLACK ? Promise.resolve( true ) : slack( member.email_address ) ) ).then( f => members )
 } )
 .then( members => console.log( 'Template generation complete' ) )
 .catch( err => console.log( err ) )
