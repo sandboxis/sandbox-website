@@ -64,6 +64,7 @@ mailchimp.get( `/lists/${mainlistid}` )
 	} )
 } )
 .then( members => {
+	console.log( `Adding ${members.length} members to slack` )
 	// Invite everyone who has not set their slack handle and return the member array for the next operation
 	return Promise.all( members.map( member => member.merge_fields.SLACK ? Promise.resolve( true ) : slack( member.email_address ) ) )
 } )
