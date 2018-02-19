@@ -68,5 +68,5 @@ mailchimp.get( `/lists/${mainlistid}` )
 	// Invite everyone who has not set their slack handle and return the member array for the next operation
 	return Promise.all( members.map( member => member.merge_fields.SLACK ? Promise.resolve( true ) : slack( member.email_address ) ) )
 } )
-.then( f => console.log( 'Template generation complete' ) )
+.then( results => console.log( 'Template generation complete' ) )
 .catch( err => console.log( err ) )
