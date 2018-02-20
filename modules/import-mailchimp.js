@@ -68,5 +68,19 @@ mailchimp.get( `/lists/${mainlistid}` )
 	// Invite everyone who has not set their slack handle and return the member array for the next operation
 	return Promise.all( members.map( member => member.merge_fields.SLACK ? Promise.resolve( true ) : slack( member.email_address ) ) )
 } )
+.then( results => {
+	return new Promise( ( resolve, reject ) => { 
+		fs.writeFile( `${ __dirname }/../${ new Date() }-success.log.json`, JSON.stringify( results ), err => {
+			err ? reject( err ) : resolve( results )
+		} )
+	} )
+} )
 .then( results => console.log( 'Template generation complete', results ) )
-.catch( err => console.log( err ) )
+.catch( badresults => {
+	console.log( 'Something went wrong in the promise chain' )
+	return new Promise( ( resolve, reject ) => { 
+		fs.writeFile( `${ __dirname }/../${ new Date() }-error.log.json`, JSON.stringify( badresults ), err => {
+			err ? reject( err ) : resolve( badresults )
+		} )
+	} )
+} )
