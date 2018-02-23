@@ -8,7 +8,7 @@
     "start": "local=true NODE_ENV=development webpack -d --progress --watch",
     "import-mailchimp": "node modules/import-mailchimp.js",
     "build": "NODE_ENV=production webpack -p --progress",
-    "update": "git pull && bash scripts/member-update.sh",
+    "update": "bash scripts/member-update.sh",
     "deploy": "bash scripts/deploy.sh"
   },
   "repository": {

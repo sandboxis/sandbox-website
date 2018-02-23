@@ -1,3 +1,4 @@
+git pull
 mkdir -p docs/assets
 mkdir -p docs/js
 node modules/import-mailchimp.js
