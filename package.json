@@ -43,6 +43,7 @@
     "request": "^2.83.0",
     "request-promise-native": "^1.0.5",
     "sass-loader": "^4.1.1",
+    "shelljs": "^0.8.1",
     "style-loader": "^0.13.1",
     "watch": "^1.0.1",
     "webpack": "^1.14.0"

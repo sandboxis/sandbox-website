@@ -21,13 +21,14 @@ const mainlistid = process.env.mainlistid
 const mainlistname = process.env.mainlistname
 
 // Check if the list matches the assumptions
-mailchimp.get( `/lists/${mainlistid}` )
+module.exports = f => mailchimp.get( `/lists/${mainlistid}` )
 .then( res => { 
 
 	// Check if we are working on the right list
 	if ( !( res.name == mainlistname ) ) throw new Error( `List name is not ${mainlistname} but ${res.name}` )
 	if ( res.stats.member_count < 1000 ) throw new Error( `This list seems to small to be the main member list (${res.stats,member_count} members)` )
 
+	console.log( 'Immporting list from mailchimp' )
 	// Grab all member data
 	return mailchimp.get( `/lists/${mainlistid}/members`, { 
 		status: 'subscribed', // Only grab members who are not unsubscribed

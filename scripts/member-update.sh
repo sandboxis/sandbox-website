@@ -3,7 +3,7 @@ git pull
 mkdir -p docs/assets
 mkdir -p docs/js
 echo 'Generate new members json'
-node modules/import-mailchimp.js
+node modules/cron.js once
 echo 'Copy member json to docs folder'
 cp src/assets/members.json docs/assets/members.json
 echo 'Add, commit and push the changes'
