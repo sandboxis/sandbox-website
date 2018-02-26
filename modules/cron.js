@@ -6,7 +6,7 @@ console.log( process.argv[2] == 'once' ? 'Updating members once' : 'Started memb
 // seconds * minutes hours
 let frequency = 60 * 60 * 1
 if ( !process.argv[2] == 'once' )
-	setInterval( frequency, f => {
+	setInterval( f => {
 		updateMembers(  )
 		.then( f => {
 			return new Promise( ( resolve, reject ) => {
@@ -14,7 +14,7 @@ if ( !process.argv[2] == 'once' )
 				commit.code !== 0 ? reject( commit.code ) : resolve(  )
 			} )
 		} )
-	} )
+	}, frequency )
 else
 	updateMembers( )
 	.then( f => {
