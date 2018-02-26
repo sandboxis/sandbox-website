@@ -3,7 +3,7 @@ const shell = require( 'shelljs' )
 
 // milliseconds * seconds * minutes hours
 let frequency = 1000 * 60 * 60 * 1 // Every hour
-console.log( process.argv[2] == 'once' ? 'Updating members once' : `Started member update cron every ${frequency/1000} seconds (${ frequnecy/1000/60/60 } hours)` )
+console.log( process.argv[2] == 'once' ? 'Updating members once' : `Started member update cron every ${frequency/1000} seconds (${ frequency/1000/60/60 } hours)` )
 if ( !( process.argv[2] == 'once' ) ) {
 	// Set intervalled update
 	console.log( 'Runing interval update' )
