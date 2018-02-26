@@ -5,8 +5,10 @@ console.log( process.argv[2] == 'once' ? 'Updating members once' : 'Started memb
 
 // milliseconds * seconds * minutes hours
 let frequency = 1000 * 60 * 60 * 1 // Every hour
-if ( !process.argv[2] == 'once' ) {
+console.log( process.argv[2] == 'once', !process.argv[2] == 'once', !( process.argv[2] == 'once' ) )
+if ( !( process.argv[2] == 'once' ) ) {
 	// Set intervalled update
+	console.log( 'Runing interval update' )
 	setInterval( f => {
 		updateMembers(  )
 		.then( f => {
@@ -17,6 +19,7 @@ if ( !process.argv[2] == 'once' ) {
 		} )
 	}, frequency )
 } else { 
+	console.log( 'Running single update' )
 	updateMembers( )
 	.then( f => {
 		return new Promise( ( resolve, reject ) => {
