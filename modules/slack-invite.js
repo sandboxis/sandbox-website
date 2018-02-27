@@ -22,7 +22,7 @@ const invite = email => {
 			email: email,
 			// Channels are annoucements, general, help, offers, retreats, ama, traveling to
 			channels: 'C4VJG91D0,C4UTYNXCZ,C5JH5Q0SV,C5K2A4NDR,C5P2TFVQW,C5K77V8J1,C5KU4DRHU',
-			resend: true
+			resend: false
 		}
 	} )
 }
