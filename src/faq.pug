@@ -1,0 +1,23 @@
+- const page = { title: 'Frequently asked questions', desc: 'Member communications', published: '2017-01-01', url: '/', featuredimg: '/assets/sandbox-logo.svg' }
+doctype html
+html
+	include pug/_header.pug
+	body#members
+		main.container
+			div.row#intro
+				a( href=site.system.url )
+					img.col.m4.offset-m4.s6.offset-s3#logo( src=site.system.url + "assets/sandbox-logo.svg" )
+				h1.col.m6.offset-m3.s10.offset-s1 Frequently Asked Questions
+				hr.col.m6.offset-m3.s10.offset-s1
+				p.col.m6.offset-m3.s10.offset-s1 Do you have more questions? Visit the #comms channel on slack or #[a(href='https://github.com/actuallymentor/sandbox-website/') contribute on Github] if you are a programmer.
+				hr.col.m6.offset-m3.s10.offset-s1
+				div.col.m6.offset-m3.s12.flow-text
+					h2 How do I edit my profile on the website?
+					p With every newsletter we send out a 'edit your profile' link. By clicking this you can edit your information. Please do not share the link from the email to you, if someone else clicks the link they will be editing #[b your profile].
+					h2 How do I change my email?
+					p The edit profile link also allows you to edit your email.
+					h2 I keep getting slack invite emails, why?
+					p Much of Sandbox communication happend through the slack group, which is far more structured than a platform like facebook. New to slack? #[a(href="/slack") Take 5 minutes to look at this page]. If you received a number of invitations in rapid succession the Sandbox tech volunteers made a mistake and apologise.
+					h2 I do not want to receive slack intitations
+					p Once you activate your account you will not receive invote emails anymore. If you don't want to engage in the community you may click the unsubscribe link at the bottom of the email.
+	include pug/_footer.pug
