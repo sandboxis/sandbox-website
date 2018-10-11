@@ -6,7 +6,7 @@ const getpugs = path => {
 		fs.readdir( path, ( err, files ) => {
 			if ( err ) return reject( err )
 			// This will return an array of file names that contain .pug
-			resolve( files.filter( file => { return file.indexOf( '.pug' ) != -1 } ) )
+			resolve( files.filter( file => { return file.indexOf( '.pug' ) != -1 && file.endsWith('.pug') } ) )
 		} )
 	} )
 }
