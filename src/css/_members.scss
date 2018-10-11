@@ -1,7 +1,39 @@
-#members {
+#memberlist {
 	#logo {
 		margin-bottom: 50px;
 	}
-	h1 {
-	}
+
+  li.bio {
+    font-style: italic;
+    font-size: .8rem;
+    overflow: hidden;
+    position: relative;
+    line-height: 1.2em;
+    max-height: 1.2em;
+    color: #333;
+    margin-right: -1em;
+    padding-right: 1em;
+  }
+
+  // 5 lines should be enough for bio
+  li.bio:hover {
+    max-height: 6em;
+  }
+
+  li.bio:before {
+    content: '...';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  // Cover the ellipsis in case we don't need it.
+  li.bio:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    background: #efefef;
+  }
 }
