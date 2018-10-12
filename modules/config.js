@@ -1,4 +1,5 @@
 const ip = require( 'ip' )
+const fs = require('fs')
 
 module.exports = {
 	// Identity variables used in pug templates
@@ -29,5 +30,6 @@ module.exports = {
 	// Tracking codes
 	track: {
 		ga: "UA-XXXXXXXX-XX"
-	}
+	},
+  members: JSON.parse(fs.readFileSync('src/assets/members.json','utf8'))
 }

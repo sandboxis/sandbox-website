@@ -1,17 +1,31 @@
 - const page = { title: 'Member Database', desc: 'Sandbox member database', published: '2017-12-21', url: '/', featuredimg: '/assets/sandbox-logo.svg' }
 doctype html
 html
-	include pug/_header.pug
-	body#memberlist
-		main.container
-			div.row#intro
-				a( href=site.system.url )
-					img.col.m4.offset-m4.s10.offset-s1#logo( src=site.system.url + "assets/sandbox-logo.svg" )
-				p.col.m8.offset-m2.s12.flow-text#description This page lists the Sandbox members and their publically available data. 
-				div.col.m8.offset-m2.s12.flow-text#memberdata
-					form#membersearch.col.s12.m12.l12
-						input#query.col.s12.m10.l10( type="text" placeholder="Search by name, hub, interests and so on.")
-						input( type='submit' value="search" ).col.s12.m2.l2
-					div.col.s12.m12.l12#memberlistview
-						p Loading member data...
-	include pug/_footer.pug
+  include pug/_header.pug
+  body#memberlist
+    main.container
+      div.row
+        a( href=site.system.url )
+          img.col.m4.offset-m4.s10.offset-s1#logo( src=site.system.url + "assets/sandbox-logo.svg" )
+        p.col.m8.offset-m2.s12.flow-text#description This page lists the Sandbox members and their publically available data..
+        div.col.m12.s12.flow-text#memberdata
+          form#membersearch.col.s12.m12.l12
+            input#query.col.s12.m10.l10( type="text" placeholder="Search by name, hub, interests and so on.")
+            input( type='submit' value="search" ).col.s12.m2.l2
+          div.col.s12.m12.l12#memberlistview
+            ul
+              each member in site.members
+                li.member-name
+                  = member.name
+                  if member.hub
+                    span.hub (#{member.hub})
+                li.bio #{member.bio}
+                li.social
+                  if member.slack
+                    span Slack: #{member.slack},
+                  if member.linkedin
+                    a(href=member.linkedin) Linkedin
+                hr
+
+
+  include pug/_footer.pug

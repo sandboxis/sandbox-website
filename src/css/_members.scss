@@ -3,13 +3,30 @@
 		margin-bottom: 50px;
 	}
 
+  .member-name {
+    font-weight: bold;
+  }
+
+  .member-name span {
+    padding-left: 1em;
+    color: #666;
+  }
+
+  li.social {
+    font-size: .8rem;
+  }
+
+  li.social span {
+    padding-right: .5em;
+  }
+
   li.bio {
     font-style: italic;
     font-size: .8rem;
     overflow: hidden;
     position: relative;
     line-height: 1.2em;
-    max-height: 1.2em;
+    max-height: 2.4em;
     color: #333;
     margin-right: -1em;
     padding-right: 1em;

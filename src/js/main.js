@@ -1,22 +1,19 @@
 // Grab styles
 import styles from '../css/styles.scss'
 
-// Grab member parser
-import * as members from './memberlist'
-
 // These are URL redirects through js because I have no control over the DNS/server
 if (document.getElementById('store')) window.location.href = 'https://sandbox-store.squarespace.com/'
 if (document.getElementById('oncommunity')) window.location.href = 'https://sandbox-store.squarespace.com/shop/on-community-a-modern-manifesto'
 
 // Resize the video to the Vimeo aspect ratio
-const resizeVideo = ( ) => { 
+const resizeVideo = ( ) => {
 	const video = document.getElementById( 'manifestovideo' )
 	if ( !video ) return
 	video.height = video.offsetWidth/1.7777777778
  }
 
 
-window.onload = f => { 
+window.onload = f => {
 
 	// Make the manifesto video clickable
 	const manifesto = document.getElementById( 'manifesto' )
@@ -31,30 +28,6 @@ window.onload = f => {
 		// Resize after click
 		resizeVideo( )
 	 } )
-
-	// If we are on the member page, make the member list
-	const memberlist = document.getElementById( 'memberlistview' )
-	const membersearch = document.getElementById( 'membersearch' )
-	let memberstore = undefined
-	if ( memberlist ) { 
-		// Get the initial member list and render it
-		members.get( )
-			.then( members => { 
-				memberstore = members
-				return members
-			} )
-			.then( members.htmlify )
-			.then( html => memberlist.innerHTML = html )
-			.catch( console.log.bind( console ) )
-
-		// manage the search bar on the member page
-		membersearch.addEventListener( 'submit', event => { 
-			event.preventDefault(  )
-			Promise.resolve( members.search( memberstore, event.target.query.value ) )
-			.then( members.htmlify )
-			.then( html => memberlist.innerHTML = html )
-		 } )
-	 }
  }
 
 // Adjust video size when the window resizes
