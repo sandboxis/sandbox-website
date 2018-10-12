@@ -25,6 +25,9 @@ html
                     span Slack: #{member.slack},
                   if member.linkedin
                     a(href=member.linkedin) Linkedin
+                li.help
+                  if member.help
+                    span Can help with: #{member.help}
                 hr
 
 
