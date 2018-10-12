@@ -28,6 +28,9 @@ module.exports = {
 	},
 	// Tracking codes
 	track: {
-		ga: "UA-XXXXXXXX-XX"
+		ga: "UA-127428515-1"
 	}
 }
+
+
+
