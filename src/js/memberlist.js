@@ -37,7 +37,7 @@ export const htmlify = members => {
 							${ members[i].name } ${ members[i].hub ? ` (${ members[i].hub })` : '' }
 						</li>`
 		// Add the member bio if if exists
-		available +=  members[i].bio ? `<li class='bio'>${ members[i].bio }</li>` : ''
+		available +=  members[i].bio ? `<li class='bio flow-text'>${ members[i].bio }</li>` : ''
 
 		// Add slack and linkedin if they exist ( on the same line )
 		available += members[i].slack || members[i].linkedin ? `<li>
