@@ -25,10 +25,6 @@ module.exports = {
 		// facebook profile id, used for retargeting ad permissions
 		facebook: "1299359953416544",
 		url: "https://www.skillcollector.com/"
-	},
-	// Tracking codes
-	track: {
-		ga: "UA-127428515-1"
 	}
 }
 
