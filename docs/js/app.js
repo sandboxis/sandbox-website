@@ -1,2 +1,553 @@
-!function(e){function t(l){if(o[l])return o[l].exports;var r=o[l]={exports:{},id:l,loaded:!1};return e[l].call(r.exports,r,r.exports,t),r.loaded=!0,r.exports}var o={};return t.m=e,t.c=o,t.p="",t(0)}([function(e,t,o){"use strict";function l(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var o in e)Object.prototype.hasOwnProperty.call(e,o)&&(t[o]=e[o]);return t.default=e,t}function r(e){return e&&e.__esModule?e:{default:e}}var i=o(5),n=(r(i),o(2)),s=l(n);document.getElementById("store")&&(window.location.href="https://sandbox-store.squarespace.com/"),document.getElementById("oncommunity")&&(window.location.href="https://sandbox-store.squarespace.com/shop/on-community-a-modern-manifesto");var c=function(){var e=document.getElementById("manifestovideo");e&&(e.height=e.offsetWidth/1.7777777778)};window.onload=function(e){var t=document.getElementById("manifesto");t&&t.addEventListener("click",function(e){t.innerHTML='<iframe\n\t\t\tid="manifestovideo"\n\t\t\tsrc="https://player.vimeo.com/video/233941130?title=0&autoplay=1"\n\t\t\twidth="100%" height="auto"\n\t\t\tframeborder="0"\n\t\t\twebkitallowfullscreen mozallowfullscreen allowfullscreen>\n\t\t</iframe>',c()});var o=document.getElementById("memberlistview"),l=document.getElementById("membersearch"),r=void 0;o&&(s.get().then(function(e){return r=e,e}).then(s.htmlify).then(function(e){return o.innerHTML=e}).catch(console.log.bind(console)),l.addEventListener("submit",function(e){e.preventDefault(),Promise.resolve(s.search(r,e.target.query.value)).then(s.htmlify).then(function(e){return o.innerHTML=e})}))},window.onresize=function(e){return c()}},function(e,t){"use strict";e.exports=function(){var e=[];return e.toString=function(){for(var e=[],t=0;t<this.length;t++){var o=this[t];o[2]?e.push("@media "+o[2]+"{"+o[1]+"}"):e.push(o[1])}return e.join("")},e.i=function(t,o){"string"==typeof t&&(t=[[null,t,""]]);for(var l={},r=0;r<this.length;r++){var i=this[r][0];"number"==typeof i&&(l[i]=!0)}for(r=0;r<t.length;r++){var n=t[r];"number"==typeof n[0]&&l[n[0]]||(o&&!n[2]?n[2]=o:o&&(n[2]="("+n[2]+") and ("+o+")"),e.push(n))}},e}},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var o="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},l=(t.get=function(e){return new Promise(function(e,t){var o=new XMLHttpRequest;o.open("get","/assets/members.json",!0),o.send(),o.onreadystatechange=function(){4==this.readyState&&200==this.status&&e(JSON.parse(this.responseText)),4==this.readyState&&200!=this.status&&t(this.responseText)},o.ontimeout=t})},function(e){var t=arguments.length>1&&void 0!==arguments[1]&&arguments[1];if("string"==typeof e){if(t){var o=e.indexOf(" ");e=e.slice(0,o+1)+e.charAt(o+1).toUpperCase()+e.slice(o+2)}return e.charAt(0).toUpperCase()+e.slice(1)}});t.htmlify=function(e){if("object"==!("undefined"==typeof e?"undefined":o(e)))return console.log("Member json is not a json. Wut?",e);for(var t="",r=e.length-1;r>=0;r--){for(var i in e[r])e[r][i]="name"==i?l(e[r][i],!0):l(e[r][i]);var n='<li style="font-weight: bold;">\n\t\t\t\t\t\t\t'+e[r].name+" "+(e[r].hub?" ("+e[r].hub+")":"")+"\n\t\t\t\t\t\t</li>";n+=e[r].bio?"<li class='bio flow-text'>"+e[r].bio+"</li>":"",n+=e[r].slack||e[r].linkedin?"<li>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"+(e[r].slack?"Slack: "+e[r].slack:"")+"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"+(e[r].linkedin?(e[r].slack?", ":"")+" <a href="+e[r].linkedin+">Linkedin</a>":"")+"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</li>":"",n+=e[r].help?"<li>Can help with: "+e[r].help+"</li>":"",t+="\n\t\t<ul>\n\t\t\t"+n+"\n\t\t</ul>\n\t\t<hr>\n\t\t"}return t},t.search=function(e,t){return e.filter(function(e){for(var o in e)if(e[o].toLowerCase().indexOf(t.toLowerCase())!=-1)return!0;return!1})}},function(e,t,o){t=e.exports=o(1)(),t.push([e.id,"@import url(https://fonts.googleapis.com/css?family=Roboto:300,700);",""]),t.push([e.id,'iframe{border:none}a{color:#08b7e4;text-decoration:none}.row{max-width:100%}.page #logo{margin-bottom:50px}body{margin:0;font-family:Roboto,sans-serif;font-weight:300;min-height:100vh;-ms-flex-direction:column;flex-direction:column;background:#efefef}body,main{display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal}main{flex:1 0 auto;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;padding:50px 0}#footer{text-align:center;padding:10px;opacity:.6;font-size:13px}#footer #copyright{opacity:.7;margin-top:15px;margin-bottom:5px}#logo,#logo:hover{-webkit-transition:.3s;transition:.3s}#logo:hover{-webkit-filter:drop-shadow(2px 8px 5px rgba(0,0,0,.2));filter:drop-shadow(2px 8px 5px rgba(0,0,0,.2))}#links{margin-top:50px;text-align:center}#links span{color:#d0d0d0;margin:10px}#links a{padding:15px 10px}.flow-text{font-weight:300}@media only screen and (min-width:360px){.flow-text{font-size:1rem;line-height:1.7rem}}@media only screen and (min-width:369.8px){.flow-text{font-size:1.002rem;line-height:1.7034rem}}@media only screen and (min-width:379.6px){.flow-text{font-size:1.004rem;line-height:1.7068rem}}@media only screen and (min-width:389.4px){.flow-text{font-size:1.006rem;line-height:1.7102rem}}@media only screen and (min-width:399.2px){.flow-text{font-size:1.008rem;line-height:1.7136rem}}@media only screen and (min-width:409px){.flow-text{font-size:1.01rem;line-height:1.717rem}}@media only screen and (min-width:418.8px){.flow-text{font-size:1.012rem;line-height:1.7204rem}}@media only screen and (min-width:428.6px){.flow-text{font-size:1.014rem;line-height:1.7238rem}}@media only screen and (min-width:438.4px){.flow-text{font-size:1.016rem;line-height:1.7272rem}}@media only screen and (min-width:448.2px){.flow-text{font-size:1.018rem;line-height:1.7306rem}}@media only screen and (min-width:458px){.flow-text{font-size:1.02rem;line-height:1.734rem}}@media only screen and (min-width:467.8px){.flow-text{font-size:1.022rem;line-height:1.7374rem}}@media only screen and (min-width:477.6px){.flow-text{font-size:1.024rem;line-height:1.7408rem}}@media only screen and (min-width:487.4px){.flow-text{font-size:1.026rem;line-height:1.7442rem}}@media only screen and (min-width:497.2px){.flow-text{font-size:1.028rem;line-height:1.7476rem}}@media only screen and (min-width:507px){.flow-text{font-size:1.03rem;line-height:1.751rem}}@media only screen and (min-width:516.8px){.flow-text{font-size:1.032rem;line-height:1.7544rem}}@media only screen and (min-width:526.6px){.flow-text{font-size:1.034rem;line-height:1.7578rem}}@media only screen and (min-width:536.4px){.flow-text{font-size:1.036rem;line-height:1.7612rem}}@media only screen and (min-width:546.2px){.flow-text{font-size:1.038rem;line-height:1.7646rem}}@media only screen and (min-width:556px){.flow-text{font-size:1.04rem;line-height:1.768rem}}@media only screen and (min-width:565.8px){.flow-text{font-size:1.042rem;line-height:1.7714rem}}@media only screen and (min-width:575.6px){.flow-text{font-size:1.044rem;line-height:1.7748rem}}@media only screen and (min-width:585.4px){.flow-text{font-size:1.046rem;line-height:1.7782rem}}@media only screen and (min-width:595.2px){.flow-text{font-size:1.048rem;line-height:1.7816rem}}@media only screen and (min-width:605px){.flow-text{font-size:1.05rem;line-height:1.785rem}}@media only screen and (min-width:614.8px){.flow-text{font-size:1.052rem;line-height:1.7884rem}}@media only screen and (min-width:624.6px){.flow-text{font-size:1.054rem;line-height:1.7918rem}}@media only screen and (min-width:634.4px){.flow-text{font-size:1.056rem;line-height:1.7952rem}}@media only screen and (min-width:644.2px){.flow-text{font-size:1.058rem;line-height:1.7986rem}}@media only screen and (min-width:654px){.flow-text{font-size:1.06rem;line-height:1.802rem}}@media only screen and (min-width:663.8px){.flow-text{font-size:1.062rem;line-height:1.8054rem}}@media only screen and (min-width:673.6px){.flow-text{font-size:1.064rem;line-height:1.8088rem}}@media only screen and (min-width:683.4px){.flow-text{font-size:1.066rem;line-height:1.8122rem}}@media only screen and (min-width:693.2px){.flow-text{font-size:1.068rem;line-height:1.8156rem}}@media only screen and (min-width:703px){.flow-text{font-size:1.07rem;line-height:1.819rem}}@media only screen and (min-width:712.8px){.flow-text{font-size:1.072rem;line-height:1.8224rem}}@media only screen and (min-width:722.6px){.flow-text{font-size:1.074rem;line-height:1.8258rem}}@media only screen and (min-width:732.4px){.flow-text{font-size:1.076rem;line-height:1.8292rem}}@media only screen and (min-width:742.2px){.flow-text{font-size:1.078rem;line-height:1.8326rem}}@media only screen and (min-width:752px){.flow-text{font-size:1.08rem;line-height:1.836rem}}@media only screen and (max-width:360px){.flow-text{font-size:1.2rem}}.container{margin:0 auto;max-width:1280px;width:90%}@media only screen and (min-width:601px){.container{width:85%}}@media only screen and (min-width:993px){.container{width:70%}}.container .row{margin-left:-.75rem;margin-right:-.75rem}.section{padding-top:1rem;padding-bottom:1rem}.section.no-pad{padding:0}.section.no-pad-bot{padding-bottom:0}.section.no-pad-top{padding-top:0}.row{margin-left:auto;margin-right:auto;margin-bottom:20px}.row:after{content:"";display:table;clear:both}.row .col{float:left;box-sizing:border-box;padding:0 .75rem;min-height:1px}.row .col[class*=pull-],.row .col[class*=push-]{position:relative}.row .col.l1,.row .col.l2,.row .col.l3,.row .col.l4,.row .col.l5,.row .col.l6,.row .col.l7,.row .col.l8,.row .col.l9,.row .col.l10,.row .col.l11,.row .col.l12,.row .col.m1,.row .col.m2,.row .col.m3,.row .col.m4,.row .col.m5,.row .col.m6,.row .col.m7,.row .col.m8,.row .col.m9,.row .col.m10,.row .col.m11,.row .col.m12,.row .col.s1,.row .col.s2,.row .col.s3,.row .col.s4,.row .col.s5,.row .col.s6,.row .col.s7,.row .col.s8,.row .col.s9,.row .col.s10,.row .col.s11,.row .col.s12,.row .col.xl1,.row .col.xl2,.row .col.xl3,.row .col.xl4,.row .col.xl5,.row .col.xl6,.row .col.xl7,.row .col.xl8,.row .col.xl9,.row .col.xl10,.row .col.xl11,.row .col.xl12{margin-left:auto;left:auto;right:auto}.row .col.s1{width:8.33333%}.row .col.s2{width:16.66667%}.row .col.s3{width:25%}.row .col.s4{width:33.33333%}.row .col.s5{width:41.66667%}.row .col.s6{width:50%}.row .col.s7{width:58.33333%}.row .col.s8{width:66.66667%}.row .col.s9{width:75%}.row .col.s10{width:83.33333%}.row .col.s11{width:91.66667%}.row .col.s12{width:100%}.row .col.offset-s1{margin-left:8.33333%}.row .col.pull-s1{right:8.33333%}.row .col.push-s1{left:8.33333%}.row .col.offset-s2{margin-left:16.66667%}.row .col.pull-s2{right:16.66667%}.row .col.push-s2{left:16.66667%}.row .col.offset-s3{margin-left:25%}.row .col.pull-s3{right:25%}.row .col.push-s3{left:25%}.row .col.offset-s4{margin-left:33.33333%}.row .col.pull-s4{right:33.33333%}.row .col.push-s4{left:33.33333%}.row .col.offset-s5{margin-left:41.66667%}.row .col.pull-s5{right:41.66667%}.row .col.push-s5{left:41.66667%}.row .col.offset-s6{margin-left:50%}.row .col.pull-s6{right:50%}.row .col.push-s6{left:50%}.row .col.offset-s7{margin-left:58.33333%}.row .col.pull-s7{right:58.33333%}.row .col.push-s7{left:58.33333%}.row .col.offset-s8{margin-left:66.66667%}.row .col.pull-s8{right:66.66667%}.row .col.push-s8{left:66.66667%}.row .col.offset-s9{margin-left:75%}.row .col.pull-s9{right:75%}.row .col.push-s9{left:75%}.row .col.offset-s10{margin-left:83.33333%}.row .col.pull-s10{right:83.33333%}.row .col.push-s10{left:83.33333%}.row .col.offset-s11{margin-left:91.66667%}.row .col.pull-s11{right:91.66667%}.row .col.push-s11{left:91.66667%}.row .col.offset-s12{margin-left:100%}.row .col.pull-s12{right:100%}.row .col.push-s12{left:100%}@media only screen and (min-width:601px){.row .col.m1{width:8.33333%}.row .col.m2{width:16.66667%}.row .col.m3{width:25%}.row .col.m4{width:33.33333%}.row .col.m5{width:41.66667%}.row .col.m6{width:50%}.row .col.m7{width:58.33333%}.row .col.m8{width:66.66667%}.row .col.m9{width:75%}.row .col.m10{width:83.33333%}.row .col.m11{width:91.66667%}.row .col.m12{width:100%}.row .col.offset-m1{margin-left:8.33333%}.row .col.pull-m1{right:8.33333%}.row .col.push-m1{left:8.33333%}.row .col.offset-m2{margin-left:16.66667%}.row .col.pull-m2{right:16.66667%}.row .col.push-m2{left:16.66667%}.row .col.offset-m3{margin-left:25%}.row .col.pull-m3{right:25%}.row .col.push-m3{left:25%}.row .col.offset-m4{margin-left:33.33333%}.row .col.pull-m4{right:33.33333%}.row .col.push-m4{left:33.33333%}.row .col.offset-m5{margin-left:41.66667%}.row .col.pull-m5{right:41.66667%}.row .col.push-m5{left:41.66667%}.row .col.offset-m6{margin-left:50%}.row .col.pull-m6{right:50%}.row .col.push-m6{left:50%}.row .col.offset-m7{margin-left:58.33333%}.row .col.pull-m7{right:58.33333%}.row .col.push-m7{left:58.33333%}.row .col.offset-m8{margin-left:66.66667%}.row .col.pull-m8{right:66.66667%}.row .col.push-m8{left:66.66667%}.row .col.offset-m9{margin-left:75%}.row .col.pull-m9{right:75%}.row .col.push-m9{left:75%}.row .col.offset-m10{margin-left:83.33333%}.row .col.pull-m10{right:83.33333%}.row .col.push-m10{left:83.33333%}.row .col.offset-m11{margin-left:91.66667%}.row .col.pull-m11{right:91.66667%}.row .col.push-m11{left:91.66667%}.row .col.offset-m12{margin-left:100%}.row .col.pull-m12{right:100%}.row .col.push-m12{left:100%}}@media only screen and (min-width:993px){.row .col.l1{width:8.33333%}.row .col.l2{width:16.66667%}.row .col.l3{width:25%}.row .col.l4{width:33.33333%}.row .col.l5{width:41.66667%}.row .col.l6{width:50%}.row .col.l7{width:58.33333%}.row .col.l8{width:66.66667%}.row .col.l9{width:75%}.row .col.l10{width:83.33333%}.row .col.l11{width:91.66667%}.row .col.l12{width:100%}.row .col.offset-l1{margin-left:8.33333%}.row .col.pull-l1{right:8.33333%}.row .col.push-l1{left:8.33333%}.row .col.offset-l2{margin-left:16.66667%}.row .col.pull-l2{right:16.66667%}.row .col.push-l2{left:16.66667%}.row .col.offset-l3{margin-left:25%}.row .col.pull-l3{right:25%}.row .col.push-l3{left:25%}.row .col.offset-l4{margin-left:33.33333%}.row .col.pull-l4{right:33.33333%}.row .col.push-l4{left:33.33333%}.row .col.offset-l5{margin-left:41.66667%}.row .col.pull-l5{right:41.66667%}.row .col.push-l5{left:41.66667%}.row .col.offset-l6{margin-left:50%}.row .col.pull-l6{right:50%}.row .col.push-l6{left:50%}.row .col.offset-l7{margin-left:58.33333%}.row .col.pull-l7{right:58.33333%}.row .col.push-l7{left:58.33333%}.row .col.offset-l8{margin-left:66.66667%}.row .col.pull-l8{right:66.66667%}.row .col.push-l8{left:66.66667%}.row .col.offset-l9{margin-left:75%}.row .col.pull-l9{right:75%}.row .col.push-l9{left:75%}.row .col.offset-l10{margin-left:83.33333%}.row .col.pull-l10{right:83.33333%}.row .col.push-l10{left:83.33333%}.row .col.offset-l11{margin-left:91.66667%}.row .col.pull-l11{right:91.66667%}.row .col.push-l11{left:91.66667%}.row .col.offset-l12{margin-left:100%}.row .col.pull-l12{right:100%}.row .col.push-l12{left:100%}}@media only screen and (min-width:1201px){.row .col.xl1{width:8.33333%}.row .col.xl2{width:16.66667%}.row .col.xl3{width:25%}.row .col.xl4{width:33.33333%}.row .col.xl5{width:41.66667%}.row .col.xl6{width:50%}.row .col.xl7{width:58.33333%}.row .col.xl8{width:66.66667%}.row .col.xl9{width:75%}.row .col.xl10{width:83.33333%}.row .col.xl11{width:91.66667%}.row .col.xl12{width:100%}.row .col.offset-xl1{margin-left:8.33333%}.row .col.pull-xl1{right:8.33333%}.row .col.push-xl1{left:8.33333%}.row .col.offset-xl2{margin-left:16.66667%}.row .col.pull-xl2{right:16.66667%}.row .col.push-xl2{left:16.66667%}.row .col.offset-xl3{margin-left:25%}.row .col.pull-xl3{right:25%}.row .col.push-xl3{left:25%}.row .col.offset-xl4{margin-left:33.33333%}.row .col.pull-xl4{right:33.33333%}.row .col.push-xl4{left:33.33333%}.row .col.offset-xl5{margin-left:41.66667%}.row .col.pull-xl5{right:41.66667%}.row .col.push-xl5{left:41.66667%}.row .col.offset-xl6{margin-left:50%}.row .col.pull-xl6{right:50%}.row .col.push-xl6{left:50%}.row .col.offset-xl7{margin-left:58.33333%}.row .col.pull-xl7{right:58.33333%}.row .col.push-xl7{left:58.33333%}.row .col.offset-xl8{margin-left:66.66667%}.row .col.pull-xl8{right:66.66667%}.row .col.push-xl8{left:66.66667%}.row .col.offset-xl9{margin-left:75%}.row .col.pull-xl9{right:75%}.row .col.push-xl9{left:75%}.row .col.offset-xl10{margin-left:83.33333%}.row .col.pull-xl10{right:83.33333%}.row .col.push-xl10{left:83.33333%}.row .col.offset-xl11{margin-left:91.66667%}.row .col.pull-xl11{right:91.66667%}.row .col.push-xl11{left:91.66667%}.row .col.offset-xl12{margin-left:100%}.row .col.pull-xl12{right:100%}.row .col.push-xl12{left:100%}}#index #intro{margin-top:30px}#index #intro p{text-align:center}#index #description{margin-top:50px}#index #values{text-align:center;margin-top:30px}#index #values ul{list-style-type:none;padding:0}#index #values ul li{margin:10px 0}#index #manifesto{margin-top:30px}#index #manifesto img{height:auto;width:100%}#join p{text-align:center}#join .container #links a{display:inline-block}#contact p{text-align:center}#memberlist #logo{margin-bottom:50px}#memberlist li.bio{font-style:italic;overflow:hidden;position:relative;line-height:1.2em;max-height:1.2em;color:#333;margin-right:-1em;padding-right:1em}#memberlist li.bio:hover{max-height:6em}#memberlist li.bio:before{content:"...";position:absolute;right:0;bottom:0}#memberlist li.bio:after{content:"";position:absolute;right:0;width:1em;height:1em;margin-top:.2em;background:#efefef}#memberlist #logo{margin-bottom:20px}#memberlist p{text-align:center}#memberlist ul{list-style:none}#memberlist #membersearch input{border:none;padding:10px}#bylaws .tab{position:relative;margin-bottom:1px;width:100%;color:#000;overflow:hidden;text-align:left}#bylaws input{position:relative;opacity:0;z-index:-1}#bylaws label{position:relative;right:0;top:0;display:block;padding:0 0 0 1em;background:#efefef;font-weight:700;line-height:3;cursor:pointer}#bylaws .tab-content{max-height:0;overflow:hidden;background:#efefef;-webkit-transition:max-height .35s;-o-transition:max-height .35s;transition:max-height .35s}#bylaws .tab-content p{margin:1em}#bylaws input:checked~.tab-content{max-height:100em}#bylaws label:after{position:absolute;right:0;top:0;display:block;width:3em;height:3em;line-height:3;text-align:center;-webkit-transition:all .35s;-o-transition:all .35s;transition:all .35s}#bylaws input[type=checkbox]+label:after{content:"+"}#bylaws input[type=checkbox]:checked+label:after{transform:rotate(315deg)}',""])},function(e,t,o){function l(e,t){for(var o=0;o<e.length;o++){var l=e[o],r=h[l.id];if(r){r.refs++;for(var i=0;i<r.parts.length;i++)r.parts[i](l.parts[i]);for(;i<l.parts.length;i++)r.parts.push(f(l.parts[i],t))}else{for(var n=[],i=0;i<l.parts.length;i++)n.push(f(l.parts[i],t));h[l.id]={id:l.id,refs:1,parts:n}}}}function r(e){for(var t=[],o={},l=0;l<e.length;l++){var r=e[l],i=r[0],n=r[1],s=r[2],c=r[3],f={css:n,media:s,sourceMap:c};o[i]?o[i].parts.push(f):t.push(o[i]={id:i,parts:[f]})}return t}function i(e,t){var o=u(),l=y[y.length-1];if("top"===e.insertAt)l?l.nextSibling?o.insertBefore(t,l.nextSibling):o.appendChild(t):o.insertBefore(t,o.firstChild),y.push(t);else{if("bottom"!==e.insertAt)throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");o.appendChild(t)}}function n(e){e.parentNode.removeChild(e);var t=y.indexOf(e);t>=0&&y.splice(t,1)}function s(e){var t=document.createElement("style");return t.type="text/css",i(e,t),t}function c(e){var t=document.createElement("link");return t.rel="stylesheet",i(e,t),t}function f(e,t){var o,l,r;if(t.singleton){var i=x++;o=g||(g=s(t)),l=a.bind(null,o,i,!1),r=a.bind(null,o,i,!0)}else e.sourceMap&&"function"==typeof URL&&"function"==typeof URL.createObjectURL&&"function"==typeof URL.revokeObjectURL&&"function"==typeof Blob&&"function"==typeof btoa?(o=c(t),l=w.bind(null,o),r=function(){n(o),o.href&&URL.revokeObjectURL(o.href)}):(o=s(t),l=m.bind(null,o),r=function(){n(o)});return l(e),function(t){if(t){if(t.css===e.css&&t.media===e.media&&t.sourceMap===e.sourceMap)return;l(e=t)}else r()}}function a(e,t,o,l){var r=o?"":l.css;if(e.styleSheet)e.styleSheet.cssText=b(t,r);else{var i=document.createTextNode(r),n=e.childNodes;n[t]&&e.removeChild(n[t]),n.length?e.insertBefore(i,n[t]):e.appendChild(i)}}function m(e,t){var o=t.css,l=t.media;if(l&&e.setAttribute("media",l),e.styleSheet)e.styleSheet.cssText=o;else{for(;e.firstChild;)e.removeChild(e.firstChild);e.appendChild(document.createTextNode(o))}}function w(e,t){var o=t.css,l=t.sourceMap;l&&(o+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(l))))+" */");var r=new Blob([o],{type:"text/css"}),i=e.href;e.href=URL.createObjectURL(r),i&&URL.revokeObjectURL(i)}var h={},d=function(e){var t;return function(){return"undefined"==typeof t&&(t=e.apply(this,arguments)),t}},p=d(function(){return/msie [6-9]\b/.test(self.navigator.userAgent.toLowerCase())}),u=d(function(){return document.head||document.getElementsByTagName("head")[0]}),g=null,x=0,y=[];e.exports=function(e,t){t=t||{},"undefined"==typeof t.singleton&&(t.singleton=p()),"undefined"==typeof t.insertAt&&(t.insertAt="bottom");var o=r(e);return l(o,t),function(e){for(var i=[],n=0;n<o.length;n++){var s=o[n],c=h[s.id];c.refs--,i.push(c)}if(e){var f=r(e);l(f,t)}for(var n=0;n<i.length;n++){var c=i[n];if(0===c.refs){for(var a=0;a<c.parts.length;a++)c.parts[a]();delete h[c.id]}}}};var b=function(){var e=[];return function(t,o){return e[t]=o,e.filter(Boolean).join("\n")}}()},function(e,t,o){var l=o(3);"string"==typeof l&&(l=[[e.id,l,""]]),o(4)(l,{}),l.locals&&(e.exports=l.locals)}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+/******/
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/*!************************!*\
+  !*** ./src/js/main.js ***!
+  \************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _styles = __webpack_require__(/*! ../css/styles.scss */ 1);
+	
+	var _styles2 = _interopRequireDefault(_styles);
+	
+	var _memberlist = __webpack_require__(/*! ./memberlist */ 5);
+	
+	var members = _interopRequireWildcard(_memberlist);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	// These are URL redirects through js because I have no control over the DNS/server
+	// Grab styles
+	if (document.getElementById('store')) window.location.href = 'https://sandbox-store.squarespace.com/';
+	
+	// Grab member parser
+	
+	if (document.getElementById('oncommunity')) window.location.href = 'https://sandbox-store.squarespace.com/shop/on-community-a-modern-manifesto';
+	
+	// Resize the video to the Vimeo aspect ratio
+	var resizeVideo = function resizeVideo() {
+		var video = document.getElementById('manifestovideo');
+		if (!video) return;
+		video.height = video.offsetWidth / 1.7777777778;
+	};
+	
+	window.onload = function (f) {
+	
+		// Make the manifesto video clickable
+		var manifesto = document.getElementById('manifesto');
+		if (manifesto) manifesto.addEventListener('click', function (e) {
+			manifesto.innerHTML = '<iframe\n\t\t\tid="manifestovideo"\n\t\t\tsrc="https://player.vimeo.com/video/233941130?title=0&autoplay=1"\n\t\t\twidth="100%" height="auto"\n\t\t\tframeborder="0"\n\t\t\twebkitallowfullscreen mozallowfullscreen allowfullscreen>\n\t\t</iframe>';
+			// Resize after click
+			resizeVideo();
+		});
+	
+		// If we are on the member page, make the member list
+		var memberlist = document.getElementById('memberlistview');
+		var membersearch = document.getElementById('membersearch');
+		var memberstore = undefined;
+		if (memberlist) {
+			// Get the initial member list and render it
+			members.get().then(function (members) {
+				memberstore = members;
+				return members;
+			}).then(members.htmlify).then(function (html) {
+				return memberlist.innerHTML = html;
+			}).catch(console.log.bind(console));
+	
+			// manage the search bar on the member page
+			membersearch.addEventListener('submit', function (event) {
+				event.preventDefault();
+				Promise.resolve(members.search(memberstore, event.target.query.value)).then(members.htmlify).then(function (html) {
+					return memberlist.innerHTML = html;
+				});
+			});
+		}
+	};
+	
+	// Adjust video size when the window resizes
+	window.onresize = function (f) {
+		return resizeVideo();
+	};
+
+/***/ }),
+/* 1 */
+/*!*****************************!*\
+  !*** ./src/css/styles.scss ***!
+  \*****************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !../../~/css-loader!../../~/sass-loader!../../~/postcss-loader!./styles.scss */ 2);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ../../~/style-loader/addStyles.js */ 4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/sass-loader/index.js!../../node_modules/postcss-loader/index.js!./styles.scss", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/sass-loader/index.js!../../node_modules/postcss-loader/index.js!./styles.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ }),
+/* 2 */
+/*!*******************************************************************************!*\
+  !*** ./~/css-loader!./~/sass-loader!./~/postcss-loader!./src/css/styles.scss ***!
+  \*******************************************************************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ../../~/css-loader/lib/css-base.js */ 3)();
+	// imports
+	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Roboto:300,700);", ""]);
+	
+	// module
+	exports.push([module.id, "/* Font */\n/* Global style rules */\niframe {\n  border: none; }\n\na {\n  color: #08b7e4;\n  text-decoration: none; }\n\n.row {\n  max-width: 100%; }\n\n.page #logo {\n  margin-bottom: 50px; }\n\nbody {\n  margin: 0;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 300;\n  display: flex;\n  min-height: 100vh;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -ms-flex-direction: column;\n  flex-direction: column;\n  background: #efefef; }\n\nmain {\n  flex: 1 0 auto;\n  display: flex;\n  -webkit-box-align: center;\n  -ms-flex-align: center;\n  align-items: center;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -ms-flex-direction: column;\n  flex-direction: column;\n  -webkit-box-pack: center;\n  -ms-flex-pack: center;\n  justify-content: center;\n  padding: 50px 0; }\n\n#footer {\n  text-align: center;\n  padding: 10px;\n  opacity: 0.6;\n  font-size: 13px; }\n  #footer #copyright {\n    opacity: 0.7;\n    margin-top: 15px;\n    margin-bottom: 5px; }\n\n/* Widespread rules */\n#logo {\n  -webkit-transition: 0.3s;\n  transition: 0.3s; }\n  #logo:hover {\n    -webkit-transition: 0.3s;\n    transition: 0.3s;\n    -webkit-filter: drop-shadow(2px 8px 5px rgba(0, 0, 0, 0.2));\n    filter: drop-shadow(2px 8px 5px rgba(0, 0, 0, 0.2)); }\n\n#links {\n  margin-top: 50px;\n  text-align: center; }\n  #links span {\n    color: #d0d0d0;\n    margin: 10px; }\n  #links a {\n    padding: 15px 10px; }\n\n/* Import grid system */\n/* Adapted from https://github.com/Dogfalo/materialize */\n.flow-text {\n  font-weight: 300; }\n  @media only screen and (min-width: 360px) {\n    .flow-text {\n      font-size: 1rem;\n      line-height: 1.7rem; } }\n  @media only screen and (min-width: 369.8px) {\n    .flow-text {\n      font-size: 1.002rem;\n      line-height: 1.7034rem; } }\n  @media only screen and (min-width: 379.6px) {\n    .flow-text {\n      font-size: 1.004rem;\n      line-height: 1.7068rem; } }\n  @media only screen and (min-width: 389.4px) {\n    .flow-text {\n      font-size: 1.006rem;\n      line-height: 1.7102rem; } }\n  @media only screen and (min-width: 399.2px) {\n    .flow-text {\n      font-size: 1.008rem;\n      line-height: 1.7136rem; } }\n  @media only screen and (min-width: 409px) {\n    .flow-text {\n      font-size: 1.01rem;\n      line-height: 1.717rem; } }\n  @media only screen and (min-width: 418.8px) {\n    .flow-text {\n      font-size: 1.012rem;\n      line-height: 1.7204rem; } }\n  @media only screen and (min-width: 428.6px) {\n    .flow-text {\n      font-size: 1.014rem;\n      line-height: 1.7238rem; } }\n  @media only screen and (min-width: 438.4px) {\n    .flow-text {\n      font-size: 1.016rem;\n      line-height: 1.7272rem; } }\n  @media only screen and (min-width: 448.2px) {\n    .flow-text {\n      font-size: 1.018rem;\n      line-height: 1.7306rem; } }\n  @media only screen and (min-width: 458px) {\n    .flow-text {\n      font-size: 1.02rem;\n      line-height: 1.734rem; } }\n  @media only screen and (min-width: 467.8px) {\n    .flow-text {\n      font-size: 1.022rem;\n      line-height: 1.7374rem; } }\n  @media only screen and (min-width: 477.6px) {\n    .flow-text {\n      font-size: 1.024rem;\n      line-height: 1.7408rem; } }\n  @media only screen and (min-width: 487.4px) {\n    .flow-text {\n      font-size: 1.026rem;\n      line-height: 1.7442rem; } }\n  @media only screen and (min-width: 497.2px) {\n    .flow-text {\n      font-size: 1.028rem;\n      line-height: 1.7476rem; } }\n  @media only screen and (min-width: 507px) {\n    .flow-text {\n      font-size: 1.03rem;\n      line-height: 1.751rem; } }\n  @media only screen and (min-width: 516.8px) {\n    .flow-text {\n      font-size: 1.032rem;\n      line-height: 1.7544rem; } }\n  @media only screen and (min-width: 526.6px) {\n    .flow-text {\n      font-size: 1.034rem;\n      line-height: 1.7578rem; } }\n  @media only screen and (min-width: 536.4px) {\n    .flow-text {\n      font-size: 1.036rem;\n      line-height: 1.7612rem; } }\n  @media only screen and (min-width: 546.2px) {\n    .flow-text {\n      font-size: 1.038rem;\n      line-height: 1.7646rem; } }\n  @media only screen and (min-width: 556px) {\n    .flow-text {\n      font-size: 1.04rem;\n      line-height: 1.768rem; } }\n  @media only screen and (min-width: 565.8px) {\n    .flow-text {\n      font-size: 1.042rem;\n      line-height: 1.7714rem; } }\n  @media only screen and (min-width: 575.6px) {\n    .flow-text {\n      font-size: 1.044rem;\n      line-height: 1.7748rem; } }\n  @media only screen and (min-width: 585.4px) {\n    .flow-text {\n      font-size: 1.046rem;\n      line-height: 1.7782rem; } }\n  @media only screen and (min-width: 595.2px) {\n    .flow-text {\n      font-size: 1.048rem;\n      line-height: 1.7816rem; } }\n  @media only screen and (min-width: 605px) {\n    .flow-text {\n      font-size: 1.05rem;\n      line-height: 1.785rem; } }\n  @media only screen and (min-width: 614.8px) {\n    .flow-text {\n      font-size: 1.052rem;\n      line-height: 1.7884rem; } }\n  @media only screen and (min-width: 624.6px) {\n    .flow-text {\n      font-size: 1.054rem;\n      line-height: 1.7918rem; } }\n  @media only screen and (min-width: 634.4px) {\n    .flow-text {\n      font-size: 1.056rem;\n      line-height: 1.7952rem; } }\n  @media only screen and (min-width: 644.2px) {\n    .flow-text {\n      font-size: 1.058rem;\n      line-height: 1.7986rem; } }\n  @media only screen and (min-width: 654px) {\n    .flow-text {\n      font-size: 1.06rem;\n      line-height: 1.802rem; } }\n  @media only screen and (min-width: 663.8px) {\n    .flow-text {\n      font-size: 1.062rem;\n      line-height: 1.8054rem; } }\n  @media only screen and (min-width: 673.6px) {\n    .flow-text {\n      font-size: 1.064rem;\n      line-height: 1.8088rem; } }\n  @media only screen and (min-width: 683.4px) {\n    .flow-text {\n      font-size: 1.066rem;\n      line-height: 1.8122rem; } }\n  @media only screen and (min-width: 693.2px) {\n    .flow-text {\n      font-size: 1.068rem;\n      line-height: 1.8156rem; } }\n  @media only screen and (min-width: 703px) {\n    .flow-text {\n      font-size: 1.07rem;\n      line-height: 1.819rem; } }\n  @media only screen and (min-width: 712.8px) {\n    .flow-text {\n      font-size: 1.072rem;\n      line-height: 1.8224rem; } }\n  @media only screen and (min-width: 722.6px) {\n    .flow-text {\n      font-size: 1.074rem;\n      line-height: 1.8258rem; } }\n  @media only screen and (min-width: 732.4px) {\n    .flow-text {\n      font-size: 1.076rem;\n      line-height: 1.8292rem; } }\n  @media only screen and (min-width: 742.2px) {\n    .flow-text {\n      font-size: 1.078rem;\n      line-height: 1.8326rem; } }\n  @media only screen and (min-width: 752px) {\n    .flow-text {\n      font-size: 1.08rem;\n      line-height: 1.836rem; } }\n  @media only screen and (max-width: 360px) {\n    .flow-text {\n      font-size: 1.2rem; } }\n\n.container {\n  margin: 0 auto;\n  max-width: 1280px;\n  width: 90%; }\n\n@media only screen and (min-width: 601px) {\n  .container {\n    width: 85%; } }\n\n@media only screen and (min-width: 993px) {\n  .container {\n    width: 70%; } }\n\n.container .row {\n  margin-left: -0.75rem;\n  margin-right: -0.75rem; }\n\n.section {\n  padding-top: 1rem;\n  padding-bottom: 1rem; }\n  .section.no-pad {\n    padding: 0; }\n  .section.no-pad-bot {\n    padding-bottom: 0; }\n  .section.no-pad-top {\n    padding-top: 0; }\n\n.row {\n  margin-left: auto;\n  margin-right: auto;\n  margin-bottom: 20px; }\n  .row:after {\n    content: \"\";\n    display: table;\n    clear: both; }\n  .row .col {\n    float: left;\n    box-sizing: border-box;\n    padding: 0 0.75rem;\n    min-height: 1px; }\n    .row .col[class*=\"push-\"], .row .col[class*=\"pull-\"] {\n      position: relative; }\n    .row .col.s1, .row .col.m1, .row .col.l1, .row .col.xl1 {\n      margin-left: auto;\n      left: auto;\n      right: auto; }\n    .row .col.s2, .row .col.m2, .row .col.l2, .row .col.xl2 {\n      margin-left: auto;\n      left: auto;\n      right: auto; }\n    .row .col.s3, .row .col.m3, .row .col.l3, .row .col.xl3 {\n      margin-left: auto;\n      left: auto;\n      right: auto; }\n    .row .col.s4, .row .col.m4, .row .col.l4, .row .col.xl4 {\n      margin-left: auto;\n      left: auto;\n      right: auto; }\n    .row .col.s5, .row .col.m5, .row .col.l5, .row .col.xl5 {\n      margin-left: auto;\n      left: auto;\n      right: auto; }\n    .row .col.s6, .row .col.m6, .row .col.l6, .row .col.xl6 {\n      margin-left: auto;\n      left: auto;\n      right: auto; }\n    .row .col.s7, .row .col.m7, .row .col.l7, .row .col.xl7 {\n      margin-left: auto;\n      left: auto;\n      right: auto; }\n    .row .col.s8, .row .col.m8, .row .col.l8, .row .col.xl8 {\n      margin-left: auto;\n      left: auto;\n      right: auto; }\n    .row .col.s9, .row .col.m9, .row .col.l9, .row .col.xl9 {\n      margin-left: auto;\n      left: auto;\n      right: auto; }\n    .row .col.s10, .row .col.m10, .row .col.l10, .row .col.xl10 {\n      margin-left: auto;\n      left: auto;\n      right: auto; }\n    .row .col.s11, .row .col.m11, .row .col.l11, .row .col.xl11 {\n      margin-left: auto;\n      left: auto;\n      right: auto; }\n    .row .col.s12, .row .col.m12, .row .col.l12, .row .col.xl12 {\n      margin-left: auto;\n      left: auto;\n      right: auto; }\n    .row .col.s1 {\n      width: 8.33333%; }\n    .row .col.s2 {\n      width: 16.66667%; }\n    .row .col.s3 {\n      width: 25%; }\n    .row .col.s4 {\n      width: 33.33333%; }\n    .row .col.s5 {\n      width: 41.66667%; }\n    .row .col.s6 {\n      width: 50%; }\n    .row .col.s7 {\n      width: 58.33333%; }\n    .row .col.s8 {\n      width: 66.66667%; }\n    .row .col.s9 {\n      width: 75%; }\n    .row .col.s10 {\n      width: 83.33333%; }\n    .row .col.s11 {\n      width: 91.66667%; }\n    .row .col.s12 {\n      width: 100%; }\n    .row .col.offset-s1 {\n      margin-left: 8.33333%; }\n    .row .col.pull-s1 {\n      right: 8.33333%; }\n    .row .col.push-s1 {\n      left: 8.33333%; }\n    .row .col.offset-s2 {\n      margin-left: 16.66667%; }\n    .row .col.pull-s2 {\n      right: 16.66667%; }\n    .row .col.push-s2 {\n      left: 16.66667%; }\n    .row .col.offset-s3 {\n      margin-left: 25%; }\n    .row .col.pull-s3 {\n      right: 25%; }\n    .row .col.push-s3 {\n      left: 25%; }\n    .row .col.offset-s4 {\n      margin-left: 33.33333%; }\n    .row .col.pull-s4 {\n      right: 33.33333%; }\n    .row .col.push-s4 {\n      left: 33.33333%; }\n    .row .col.offset-s5 {\n      margin-left: 41.66667%; }\n    .row .col.pull-s5 {\n      right: 41.66667%; }\n    .row .col.push-s5 {\n      left: 41.66667%; }\n    .row .col.offset-s6 {\n      margin-left: 50%; }\n    .row .col.pull-s6 {\n      right: 50%; }\n    .row .col.push-s6 {\n      left: 50%; }\n    .row .col.offset-s7 {\n      margin-left: 58.33333%; }\n    .row .col.pull-s7 {\n      right: 58.33333%; }\n    .row .col.push-s7 {\n      left: 58.33333%; }\n    .row .col.offset-s8 {\n      margin-left: 66.66667%; }\n    .row .col.pull-s8 {\n      right: 66.66667%; }\n    .row .col.push-s8 {\n      left: 66.66667%; }\n    .row .col.offset-s9 {\n      margin-left: 75%; }\n    .row .col.pull-s9 {\n      right: 75%; }\n    .row .col.push-s9 {\n      left: 75%; }\n    .row .col.offset-s10 {\n      margin-left: 83.33333%; }\n    .row .col.pull-s10 {\n      right: 83.33333%; }\n    .row .col.push-s10 {\n      left: 83.33333%; }\n    .row .col.offset-s11 {\n      margin-left: 91.66667%; }\n    .row .col.pull-s11 {\n      right: 91.66667%; }\n    .row .col.push-s11 {\n      left: 91.66667%; }\n    .row .col.offset-s12 {\n      margin-left: 100%; }\n    .row .col.pull-s12 {\n      right: 100%; }\n    .row .col.push-s12 {\n      left: 100%; }\n    @media only screen and (min-width: 601px) {\n      .row .col.m1 {\n        width: 8.33333%; }\n      .row .col.m2 {\n        width: 16.66667%; }\n      .row .col.m3 {\n        width: 25%; }\n      .row .col.m4 {\n        width: 33.33333%; }\n      .row .col.m5 {\n        width: 41.66667%; }\n      .row .col.m6 {\n        width: 50%; }\n      .row .col.m7 {\n        width: 58.33333%; }\n      .row .col.m8 {\n        width: 66.66667%; }\n      .row .col.m9 {\n        width: 75%; }\n      .row .col.m10 {\n        width: 83.33333%; }\n      .row .col.m11 {\n        width: 91.66667%; }\n      .row .col.m12 {\n        width: 100%; }\n      .row .col.offset-m1 {\n        margin-left: 8.33333%; }\n      .row .col.pull-m1 {\n        right: 8.33333%; }\n      .row .col.push-m1 {\n        left: 8.33333%; }\n      .row .col.offset-m2 {\n        margin-left: 16.66667%; }\n      .row .col.pull-m2 {\n        right: 16.66667%; }\n      .row .col.push-m2 {\n        left: 16.66667%; }\n      .row .col.offset-m3 {\n        margin-left: 25%; }\n      .row .col.pull-m3 {\n        right: 25%; }\n      .row .col.push-m3 {\n        left: 25%; }\n      .row .col.offset-m4 {\n        margin-left: 33.33333%; }\n      .row .col.pull-m4 {\n        right: 33.33333%; }\n      .row .col.push-m4 {\n        left: 33.33333%; }\n      .row .col.offset-m5 {\n        margin-left: 41.66667%; }\n      .row .col.pull-m5 {\n        right: 41.66667%; }\n      .row .col.push-m5 {\n        left: 41.66667%; }\n      .row .col.offset-m6 {\n        margin-left: 50%; }\n      .row .col.pull-m6 {\n        right: 50%; }\n      .row .col.push-m6 {\n        left: 50%; }\n      .row .col.offset-m7 {\n        margin-left: 58.33333%; }\n      .row .col.pull-m7 {\n        right: 58.33333%; }\n      .row .col.push-m7 {\n        left: 58.33333%; }\n      .row .col.offset-m8 {\n        margin-left: 66.66667%; }\n      .row .col.pull-m8 {\n        right: 66.66667%; }\n      .row .col.push-m8 {\n        left: 66.66667%; }\n      .row .col.offset-m9 {\n        margin-left: 75%; }\n      .row .col.pull-m9 {\n        right: 75%; }\n      .row .col.push-m9 {\n        left: 75%; }\n      .row .col.offset-m10 {\n        margin-left: 83.33333%; }\n      .row .col.pull-m10 {\n        right: 83.33333%; }\n      .row .col.push-m10 {\n        left: 83.33333%; }\n      .row .col.offset-m11 {\n        margin-left: 91.66667%; }\n      .row .col.pull-m11 {\n        right: 91.66667%; }\n      .row .col.push-m11 {\n        left: 91.66667%; }\n      .row .col.offset-m12 {\n        margin-left: 100%; }\n      .row .col.pull-m12 {\n        right: 100%; }\n      .row .col.push-m12 {\n        left: 100%; } }\n    @media only screen and (min-width: 993px) {\n      .row .col.l1 {\n        width: 8.33333%; }\n      .row .col.l2 {\n        width: 16.66667%; }\n      .row .col.l3 {\n        width: 25%; }\n      .row .col.l4 {\n        width: 33.33333%; }\n      .row .col.l5 {\n        width: 41.66667%; }\n      .row .col.l6 {\n        width: 50%; }\n      .row .col.l7 {\n        width: 58.33333%; }\n      .row .col.l8 {\n        width: 66.66667%; }\n      .row .col.l9 {\n        width: 75%; }\n      .row .col.l10 {\n        width: 83.33333%; }\n      .row .col.l11 {\n        width: 91.66667%; }\n      .row .col.l12 {\n        width: 100%; }\n      .row .col.offset-l1 {\n        margin-left: 8.33333%; }\n      .row .col.pull-l1 {\n        right: 8.33333%; }\n      .row .col.push-l1 {\n        left: 8.33333%; }\n      .row .col.offset-l2 {\n        margin-left: 16.66667%; }\n      .row .col.pull-l2 {\n        right: 16.66667%; }\n      .row .col.push-l2 {\n        left: 16.66667%; }\n      .row .col.offset-l3 {\n        margin-left: 25%; }\n      .row .col.pull-l3 {\n        right: 25%; }\n      .row .col.push-l3 {\n        left: 25%; }\n      .row .col.offset-l4 {\n        margin-left: 33.33333%; }\n      .row .col.pull-l4 {\n        right: 33.33333%; }\n      .row .col.push-l4 {\n        left: 33.33333%; }\n      .row .col.offset-l5 {\n        margin-left: 41.66667%; }\n      .row .col.pull-l5 {\n        right: 41.66667%; }\n      .row .col.push-l5 {\n        left: 41.66667%; }\n      .row .col.offset-l6 {\n        margin-left: 50%; }\n      .row .col.pull-l6 {\n        right: 50%; }\n      .row .col.push-l6 {\n        left: 50%; }\n      .row .col.offset-l7 {\n        margin-left: 58.33333%; }\n      .row .col.pull-l7 {\n        right: 58.33333%; }\n      .row .col.push-l7 {\n        left: 58.33333%; }\n      .row .col.offset-l8 {\n        margin-left: 66.66667%; }\n      .row .col.pull-l8 {\n        right: 66.66667%; }\n      .row .col.push-l8 {\n        left: 66.66667%; }\n      .row .col.offset-l9 {\n        margin-left: 75%; }\n      .row .col.pull-l9 {\n        right: 75%; }\n      .row .col.push-l9 {\n        left: 75%; }\n      .row .col.offset-l10 {\n        margin-left: 83.33333%; }\n      .row .col.pull-l10 {\n        right: 83.33333%; }\n      .row .col.push-l10 {\n        left: 83.33333%; }\n      .row .col.offset-l11 {\n        margin-left: 91.66667%; }\n      .row .col.pull-l11 {\n        right: 91.66667%; }\n      .row .col.push-l11 {\n        left: 91.66667%; }\n      .row .col.offset-l12 {\n        margin-left: 100%; }\n      .row .col.pull-l12 {\n        right: 100%; }\n      .row .col.push-l12 {\n        left: 100%; } }\n    @media only screen and (min-width: 1201px) {\n      .row .col.xl1 {\n        width: 8.33333%; }\n      .row .col.xl2 {\n        width: 16.66667%; }\n      .row .col.xl3 {\n        width: 25%; }\n      .row .col.xl4 {\n        width: 33.33333%; }\n      .row .col.xl5 {\n        width: 41.66667%; }\n      .row .col.xl6 {\n        width: 50%; }\n      .row .col.xl7 {\n        width: 58.33333%; }\n      .row .col.xl8 {\n        width: 66.66667%; }\n      .row .col.xl9 {\n        width: 75%; }\n      .row .col.xl10 {\n        width: 83.33333%; }\n      .row .col.xl11 {\n        width: 91.66667%; }\n      .row .col.xl12 {\n        width: 100%; }\n      .row .col.offset-xl1 {\n        margin-left: 8.33333%; }\n      .row .col.pull-xl1 {\n        right: 8.33333%; }\n      .row .col.push-xl1 {\n        left: 8.33333%; }\n      .row .col.offset-xl2 {\n        margin-left: 16.66667%; }\n      .row .col.pull-xl2 {\n        right: 16.66667%; }\n      .row .col.push-xl2 {\n        left: 16.66667%; }\n      .row .col.offset-xl3 {\n        margin-left: 25%; }\n      .row .col.pull-xl3 {\n        right: 25%; }\n      .row .col.push-xl3 {\n        left: 25%; }\n      .row .col.offset-xl4 {\n        margin-left: 33.33333%; }\n      .row .col.pull-xl4 {\n        right: 33.33333%; }\n      .row .col.push-xl4 {\n        left: 33.33333%; }\n      .row .col.offset-xl5 {\n        margin-left: 41.66667%; }\n      .row .col.pull-xl5 {\n        right: 41.66667%; }\n      .row .col.push-xl5 {\n        left: 41.66667%; }\n      .row .col.offset-xl6 {\n        margin-left: 50%; }\n      .row .col.pull-xl6 {\n        right: 50%; }\n      .row .col.push-xl6 {\n        left: 50%; }\n      .row .col.offset-xl7 {\n        margin-left: 58.33333%; }\n      .row .col.pull-xl7 {\n        right: 58.33333%; }\n      .row .col.push-xl7 {\n        left: 58.33333%; }\n      .row .col.offset-xl8 {\n        margin-left: 66.66667%; }\n      .row .col.pull-xl8 {\n        right: 66.66667%; }\n      .row .col.push-xl8 {\n        left: 66.66667%; }\n      .row .col.offset-xl9 {\n        margin-left: 75%; }\n      .row .col.pull-xl9 {\n        right: 75%; }\n      .row .col.push-xl9 {\n        left: 75%; }\n      .row .col.offset-xl10 {\n        margin-left: 83.33333%; }\n      .row .col.pull-xl10 {\n        right: 83.33333%; }\n      .row .col.push-xl10 {\n        left: 83.33333%; }\n      .row .col.offset-xl11 {\n        margin-left: 91.66667%; }\n      .row .col.pull-xl11 {\n        right: 91.66667%; }\n      .row .col.push-xl11 {\n        left: 91.66667%; }\n      .row .col.offset-xl12 {\n        margin-left: 100%; }\n      .row .col.pull-xl12 {\n        right: 100%; }\n      .row .col.push-xl12 {\n        left: 100%; } }\n\n/* Get the index styling */\n#index #intro {\n  margin-top: 30px; }\n  #index #intro p {\n    text-align: center; }\n\n#index #description {\n  margin-top: 50px; }\n\n#index #values {\n  text-align: center;\n  margin-top: 30px; }\n  #index #values ul {\n    list-style-type: none;\n    padding: 0; }\n    #index #values ul li {\n      margin: 10px 0; }\n\n#index #manifesto {\n  margin-top: 30px; }\n  #index #manifesto img {\n    height: auto;\n    width: 100%; }\n\n/* Get history page styling */\n/* Import join/application styling */\n#join p {\n  text-align: center; }\n\n#join .container #links a {\n  display: inline-block; }\n\n/* Contact */\n#contact p {\n  text-align: center; }\n\n/* Members */\n#memberlist #logo {\n  margin-bottom: 50px; }\n\n#memberlist li.bio {\n  font-style: italic;\n  overflow: hidden;\n  position: relative;\n  line-height: 1.2em;\n  max-height: 1.2em;\n  color: #333;\n  margin-right: -1em;\n  padding-right: 1em; }\n\n#memberlist li.bio:hover {\n  max-height: 6em; }\n\n#memberlist li.bio:before {\n  content: '...';\n  position: absolute;\n  right: 0;\n  bottom: 0; }\n\n#memberlist li.bio:after {\n  content: '';\n  position: absolute;\n  right: 0;\n  width: 1em;\n  height: 1em;\n  margin-top: 0.2em;\n  background: #efefef; }\n\n/* Memberlist */\n#memberlist #logo {\n  margin-bottom: 20px; }\n\n#memberlist p {\n  text-align: center; }\n\n#memberlist ul {\n  list-style: none; }\n\n#memberlist #membersearch input {\n  border: none;\n  padding: 10px; }\n\n/* Bylaws */\n/* Accordeon styles */\n#bylaws {\n  /* :checked */\n  /* Icon */ }\n  #bylaws .tab {\n    position: relative;\n    margin-bottom: 1px;\n    width: 100%;\n    color: #000000;\n    overflow: hidden;\n    text-align: left; }\n  #bylaws input {\n    position: relative;\n    opacity: 0;\n    z-index: -1; }\n  #bylaws label {\n    position: relative;\n    right: 0;\n    top: 0;\n    display: block;\n    padding: 0 0 0 1em;\n    background: #efefef;\n    font-weight: bold;\n    line-height: 3;\n    cursor: pointer; }\n  #bylaws .tab-content {\n    max-height: 0;\n    overflow: hidden;\n    background: #efefef;\n    -webkit-transition: max-height .35s;\n    -o-transition: max-height .35s;\n    transition: max-height .35s; }\n  #bylaws .tab-content p {\n    margin: 1em; }\n  #bylaws input:checked ~ .tab-content {\n    max-height: 100em; }\n  #bylaws label::after {\n    position: absolute;\n    right: 0;\n    top: 0;\n    display: block;\n    width: 3em;\n    height: 3em;\n    line-height: 3;\n    text-align: center;\n    -webkit-transition: all .35s;\n    -o-transition: all .35s;\n    transition: all .35s; }\n  #bylaws input[type=checkbox] + label::after {\n    content: \"+\"; }\n  #bylaws input[type=checkbox]:checked + label::after {\n    transform: rotate(315deg); }\n", ""]);
+	
+	// exports
+
+
+/***/ }),
+/* 3 */
+/*!**************************************!*\
+  !*** ./~/css-loader/lib/css-base.js ***!
+  \**************************************/
+/***/ (function(module, exports) {
+
+	"use strict";
+	
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function () {
+		var list = [];
+	
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for (var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if (item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+	
+		// import a list of modules into the list
+		list.i = function (modules, mediaQuery) {
+			if (typeof modules === "string") modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for (var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if (typeof id === "number") alreadyImportedModules[id] = true;
+			}
+			for (i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if (typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if (mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if (mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+/***/ }),
+/* 4 */
+/*!*************************************!*\
+  !*** ./~/style-loader/addStyles.js ***!
+  \*************************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isOldIE = memoize(function() {
+			return /msie [6-9]\b/.test(self.navigator.userAgent.toLowerCase());
+		}),
+		getHeadElement = memoize(function () {
+			return document.head || document.getElementsByTagName("head")[0];
+		}),
+		singletonElement = null,
+		singletonCounter = 0,
+		styleElementsInsertedAtTop = [];
+	
+	module.exports = function(list, options) {
+		if(true) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+	
+		options = options || {};
+		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+	
+		// By default, add <style> tags to the bottom of <head>.
+		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+	
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
+	
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
+	}
+	
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
+	
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
+	
+	function insertStyleElement(options, styleElement) {
+		var head = getHeadElement();
+		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
+		if (options.insertAt === "top") {
+			if(!lastStyleElementInsertedAtTop) {
+				head.insertBefore(styleElement, head.firstChild);
+			} else if(lastStyleElementInsertedAtTop.nextSibling) {
+				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
+			} else {
+				head.appendChild(styleElement);
+			}
+			styleElementsInsertedAtTop.push(styleElement);
+		} else if (options.insertAt === "bottom") {
+			head.appendChild(styleElement);
+		} else {
+			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+		}
+	}
+	
+	function removeStyleElement(styleElement) {
+		styleElement.parentNode.removeChild(styleElement);
+		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
+		if(idx >= 0) {
+			styleElementsInsertedAtTop.splice(idx, 1);
+		}
+	}
+	
+	function createStyleElement(options) {
+		var styleElement = document.createElement("style");
+		styleElement.type = "text/css";
+		insertStyleElement(options, styleElement);
+		return styleElement;
+	}
+	
+	function createLinkElement(options) {
+		var linkElement = document.createElement("link");
+		linkElement.rel = "stylesheet";
+		insertStyleElement(options, linkElement);
+		return linkElement;
+	}
+	
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
+	
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement(options));
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else if(obj.sourceMap &&
+			typeof URL === "function" &&
+			typeof URL.createObjectURL === "function" &&
+			typeof URL.revokeObjectURL === "function" &&
+			typeof Blob === "function" &&
+			typeof btoa === "function") {
+			styleElement = createLinkElement(options);
+			update = updateLink.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+				if(styleElement.href)
+					URL.revokeObjectURL(styleElement.href);
+			};
+		} else {
+			styleElement = createStyleElement(options);
+			update = applyToTag.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+			};
+		}
+	
+		update(obj);
+	
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+	
+	var replaceText = (function () {
+		var textStore = [];
+	
+		return function (index, replacement) {
+			textStore[index] = replacement;
+			return textStore.filter(Boolean).join('\n');
+		};
+	})();
+	
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+	
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+	
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+	
+		if(media) {
+			styleElement.setAttribute("media", media)
+		}
+	
+		if(styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+	
+	function updateLink(linkElement, obj) {
+		var css = obj.css;
+		var sourceMap = obj.sourceMap;
+	
+		if(sourceMap) {
+			// http://stackoverflow.com/a/26603875
+			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+		}
+	
+		var blob = new Blob([css], { type: "text/css" });
+	
+		var oldSrc = linkElement.href;
+	
+		linkElement.href = URL.createObjectURL(blob);
+	
+		if(oldSrc)
+			URL.revokeObjectURL(oldSrc);
+	}
+
+
+/***/ }),
+/* 5 */
+/*!******************************!*\
+  !*** ./src/js/memberlist.js ***!
+  \******************************/
+/***/ (function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+	
+	var get = exports.get = function get(f) {
+		return new Promise(function (resolve, reject) {
+			// Make a request
+			var request = new XMLHttpRequest();
+	
+			// Grab the json
+			request.open('get', '/assets/members.json', true);
+			request.send();
+	
+			// Handle the result
+			request.onreadystatechange = function () {
+				if (this.readyState == 4 && this.status == 200) resolve(JSON.parse(this.responseText));
+				if (this.readyState == 4 && this.status != 200) reject(this.responseText);
+			};
+			request.ontimeout = reject;
+		});
+	};
+	
+	var capitalise = function capitalise(text) {
+		var isaname = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+	
+		if (typeof text != 'string') return undefined;
+		if (isaname) {
+			var second = text.indexOf(' ');
+			text = text.slice(0, second + 1) + text.charAt(second + 1).toUpperCase() + text.slice(second + 2);
+		}
+		return text.charAt(0).toUpperCase() + text.slice(1);
+	};
+	
+	var htmlify = exports.htmlify = function htmlify(members) {
+		if (!(typeof members === 'undefined' ? 'undefined' : _typeof(members)) == 'object') return console.log('Member json is not a json. Wut?', members);
+		var listhtml = '';
+		for (var i = members.length - 1; i >= 0; i--) {
+			// Capitalise all output
+			for (var key in members[i]) {
+				members[i][key] = key == 'name' ? capitalise(members[i][key], true) : capitalise(members[i][key]);
+			} // Make a li with the member name and hub ( if there is a hub )
+			var available = '<li style="font-weight: bold;">\n\t\t\t\t\t\t\t' + members[i].name + ' ' + (members[i].hub ? ' (' + members[i].hub + ')' : '') + '\n\t\t\t\t\t\t</li>';
+			// Add the member bio if if exists
+			available += members[i].bio ? '<li class=\'bio flow-text\'>' + members[i].bio + '</li>' : '';
+	
+			// Add slack and linkedin if they exist ( on the same line )
+			available += members[i].slack || members[i].linkedin ? '<li>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t' + (members[i].slack ? 'Slack: ' + members[i].slack : '') + '\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t' + (members[i].linkedin ? (members[i].slack ? ', ' : '') + ' <a href=' + members[i].linkedin + '>Linkedin</a>' : '') + '\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</li>' : '';
+			available += members[i].help ? '<li>Can help with: ' + members[i].help + '</li>' : '';
+			listhtml += '\n\t\t<ul>\n\t\t\t' + available + '\n\t\t</ul>\n\t\t<hr>\n\t\t';
+		}
+		return listhtml;
+	};
+	
+	var search = exports.search = function search(members, _search) {
+		return members.filter(function (member) {
+			// If one of the keys contains the query keep it
+			for (var key in member) {
+				if (member[key].toLowerCase().indexOf(_search.toLowerCase()) != -1) return true;
+			}
+			// If no keys match throw it out
+			return false;
+		});
+	};
+
+/***/ })
+/******/ ]);
 //# sourceMappingURL=app.js.map
