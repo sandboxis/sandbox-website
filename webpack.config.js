@@ -129,26 +129,24 @@ const maps = env => {
 module.exports = {
   entry: site.system.source + 'js/main.js',
   output: {
-    filename: site.system.public + 'js/app.js'
+    filename: 'app.js',
+    path: site.system.public + '/js'
   },
   module: {
-    loaders: [
+    rules: [
     {
       test: /\.js$/,
-      loader: 'babel-loader',
-      query: {
-        presets: ['es2015']
+      exclude: /node_modules/,
+      use: {
+        loader: 'babel-loader'
       }
     },
     {
       test: /\.scss$/,
-      loaders: ["style", "css", "sass", "postcss"]
+      loaders: [ "style-loader", "css-loader", "sass-loader" ]
     }
     ]
   },
   devtool: maps( process.env.NODE_ENV ),
-  postcss: [
-  autoprefixer( { browsers: ['last 2 versions'] } )
-  ],
   plugins: pluginarray( process.env.NODE_ENV, process.env.server )
 }
