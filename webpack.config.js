@@ -76,9 +76,6 @@ const pluginarray = ( env, server ) => {
         new BrowserSyncPlugin( bsconfig, bsyncplugconfig )
     )
     plugins.push(
-      new webpack.optimize.UglifyJsPlugin( uglifyconfig )
-    )
-    plugins.push(
       new webpack.DefinePlugin( envconfig )
     )
   } else {
@@ -93,12 +90,7 @@ const pluginarray = ( env, server ) => {
 // ///////////////////////////////
 // Watchers for non webpack files
 // ///////////////////////////////
-
-// Initial build
-  Promise.all( [
-    publishpug( site ),
-    publishassets( site )
-  ] ).then( f => { if ( process.env.debug ) console.log( 'Initial build done' ) } )
+  
 
 // Watch for pug file changes
 const towatch = [ 'pug' ]
@@ -126,7 +118,11 @@ const maps = env => {
   }
 }
 
-module.exports = {
+module.exports = (  ) => Promise.all( [
+    publishpug( site ),
+    publishassets( site )
+  ] )
+.then( f => ( {
   entry: site.system.source + 'js/main.js',
   output: {
     filename: 'app.js',
@@ -149,4 +145,4 @@ module.exports = {
   },
   devtool: maps( process.env.NODE_ENV ),
   plugins: pluginarray( process.env.NODE_ENV, process.env.server )
-}
+} ) )
