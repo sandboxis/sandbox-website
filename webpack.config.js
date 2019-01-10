@@ -76,9 +76,6 @@ const pluginarray = ( env, server ) => {
         new BrowserSyncPlugin( bsconfig, bsyncplugconfig )
     )
     plugins.push(
-      new webpack.optimize.UglifyJsPlugin( uglifyconfig )
-    )
-    plugins.push(
       new webpack.DefinePlugin( envconfig )
     )
   } else {
@@ -93,12 +90,7 @@ const pluginarray = ( env, server ) => {
 // ///////////////////////////////
 // Watchers for non webpack files
 // ///////////////////////////////
-
-// Initial build
-  Promise.all( [
-    publishpug( site ),
-    publishassets( site )
-  ] ).then( f => { if ( process.env.debug ) console.log( 'Initial build done' ) } )
+  
 
 // Watch for pug file changes
 const towatch = [ 'pug' ]
@@ -126,29 +118,31 @@ const maps = env => {
   }
 }
 
-module.exports = {
+module.exports = (  ) => Promise.all( [
+    publishpug( site ),
+    publishassets( site )
+  ] )
+.then( f => ( {
   entry: site.system.source + 'js/main.js',
   output: {
-    filename: site.system.public + 'js/app.js'
+    filename: 'app.js',
+    path: site.system.public + '/js'
   },
   module: {
-    loaders: [
+    rules: [
     {
       test: /\.js$/,
-      loader: 'babel-loader',
-      query: {
-        presets: ['es2015']
+      exclude: /node_modules/,
+      use: {
+        loader: 'babel-loader'
       }
     },
     {
       test: /\.scss$/,
-      loaders: ["style", "css", "sass", "postcss"]
+      loaders: [ "style-loader", "css-loader", "sass-loader" ]
     }
     ]
   },
   devtool: maps( process.env.NODE_ENV ),
-  postcss: [
-  autoprefixer( { browsers: ['last 2 versions'] } )
-  ],
   plugins: pluginarray( process.env.NODE_ENV, process.env.server )
-}
+} ) )
