@@ -5,7 +5,7 @@ mkdir -p docs/assets
 mkdir -p docs/js
 echo 'Generate new members json'
 logger "Sandbox Sync: Generate member json"
-node modules/cron.js once
+node modules/cron.js
 echo 'Copy member json to docs folder'
 cp src/assets/members.json docs/assets/members.json
 echo 'Add, commit and push the changes'
