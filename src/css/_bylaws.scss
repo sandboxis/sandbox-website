@@ -1,15 +1,5 @@
 /* Accordeon styles */
-
 #bylaws {
-	.tab {
-		position: relative;
-		margin-bottom: 1px;
-		width: 100%;
-		color: #000000;
-		overflow: hidden;
-		text-align: left;
-	}
-
 	input {
 		position: relative;
 		opacity: 0;
@@ -40,7 +30,6 @@
 	.tab-content p {
 		margin: 1em;
 	}
-
 
 	/* :checked */
 
