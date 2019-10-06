@@ -57,4 +57,4 @@ mainlistid=THE ID OF THE MAIN LIST
 mainlistname=NAME OF THE MAIN LIST
 ```
 
-You shoudln't have to do do this however.
+Also set the environment variables `$gituser` and `$gittoken` to your user account and a valid https token for your account.
