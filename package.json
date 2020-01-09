@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "local=true NODE_ENV=development webpack -d --progress --watch",
     "import-mailchimp": "node modules/import-mailchimp.js",
-    "build": "rm -rf docs && mkdir -p docs/assets && mkdir -p docs/js && touch docs/.nojekyll && NODE_ENV=production webpack -p --progress",
+    "build": "NODE_ENV=production webpack -p --progress",
     "update": "bash scripts/member-update.sh",
     "deploy": "bash scripts/deploy.sh"
   },
@@ -27,7 +27,6 @@
     "autoprefixer": "^9.4.2",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.4",
-    "babel-preset-es2015": "^6.24.1",
     "browser-sync": "^2.26.7",
     "browser-sync-webpack-plugin": "^2.2.2",
     "css-loader": "^2.0.1",

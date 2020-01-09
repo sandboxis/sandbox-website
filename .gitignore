@@ -1,6 +1,9 @@
 # Ignore logs
 *.log.json
 
+# No not commit docs, the GH actions manages that
+docs/*
+
 # Environment variables
 .env
 
