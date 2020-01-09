@@ -1,6 +1,3 @@
-# Ignore the deployment folder
-docs/*
-
 # Ignore logs
 *.log.json
 
