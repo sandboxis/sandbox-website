@@ -1,4 +1,4 @@
-// Grab api key
+// Grab api key from local, not relevant for GH actions
 require('dotenv').config( )
 
 // File system

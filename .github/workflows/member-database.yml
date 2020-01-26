@@ -3,6 +3,11 @@ name: Build and Deploy member database
 on:
   schedule:
     - cron: '4 20 * * *'
+  push:
+    branches:
+      - master
+    paths:
+      - 'modules/import-mailchimp.js'
 
 jobs:
   build-and-deploy:
