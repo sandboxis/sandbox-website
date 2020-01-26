@@ -3,11 +3,6 @@ name: Build and Deploy member database
 on:
   schedule:
     - cron: '4 20 * * *'
-  push:
-    branches:
-      - master
-    paths:
-      - 'src/**'
 
 jobs:
   build-and-deploy:
