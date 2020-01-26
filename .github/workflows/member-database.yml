@@ -1,4 +1,4 @@
-name: Build and Deploy website
+name: Build and Deploy member database
 
 on:
   schedule:
@@ -27,7 +27,7 @@ jobs:
         slackkey: ${{ secrets.SLACK_API_KEY }}
         mainlistid: 'aac044fbe7'
         mainlistname: 'Sandbox All'
-      run: >
+      run: |
         node modules/cron.js
         cp src/assets/members.json docs/assets/members.json
 
