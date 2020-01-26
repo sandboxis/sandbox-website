@@ -2,9 +2,7 @@ name: Build and Deploy website
 
 on:
   schedule:
-    # Every 4:20AM run the schedule
-    cron: '4 20 * * *'
-
+    - cron: '4 20 * * *'
   push:
     branches:
       - master
