@@ -29,7 +29,10 @@ jobs:
         mainlistname: 'Sandbox All'
       run: |
         node modules/cron.js
+        echo "copy json to docs"
         cp src/assets/members.json docs/assets/members.json
+        ls src/assets
+        ls docs/assets
 
     - name: Commit new files
       run: |
