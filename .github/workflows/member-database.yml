@@ -31,8 +31,7 @@ jobs:
         node modules/cron.js
         echo "copy json to docs"
         cp src/assets/members.json docs/assets/members.json
-        ls src/assets
-        ls docs/assets
+        git --no-pager diff src/assets/members.json docs/assets/members.json
 
     - name: Commit new files
       run: |

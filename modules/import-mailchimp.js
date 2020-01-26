@@ -28,18 +28,44 @@ module.exports = f => mailchimp.get( `/lists/${mainlistid}` )
 	if ( !( res.name == mainlistname ) ) throw new Error( `List name is not ${mainlistname} but ${res.name}` )
 	if ( res.stats.member_count < 1000 ) throw new Error( `This list seems to small to be the main member list (${res.stats,member_count} members)` )
 
-	console.log( 'Immporting list from mailchimp' )
-	// Grab all member data
-	return mailchimp.get( `/lists/${mainlistid}/members`, { 
-		status: 'subscribed', // Only grab members who are not unsubscribed
-		count: 99999999, // Arbitrarily large number so we get all members
-	} )
+	return res.stats.member_count
 
 } )
-.then( db => { 
+.then( memberCount => {
+
+	// Mailchimp started paginating, so we need to make multiple requests
+	const pages = Math.ceil( memberCount/1000 )
+	const requests = [ ...Array( pages ) ].map( ( val, i ) => {
+		return mailchimp.get( `/lists/${mainlistid}/members`, { 
+			status: 'subscribed', // Only grab members who are not unsubscribed
+			offset: i * 1000, // Offset of 1000
+			count: 1000, // 1000 is the max
+		} )
+	} )
+
+	console.log( 'Importing list from mailchimp' )
+
+	// Grab all member data
+	return Promise.all( requests )
+
+} )
+.then( responses => { 
+
+	console.log( `Got ${ responses.length } pages of API data` )
+
+	// Merge responses
+	const reducer = ( acc, curr ) => {
+		console.log( acc.length, curr.members.length )
+		return [ ...acc, ...curr.members ]
+	}
+	const members = responses.reduce( reducer, [] )
+
 	// Remove entries without a name
-	console.log( `${db.members.length} total imported members` )
-	return db.members.filter( member => member.merge_fields.FNAME ? true : false )
+	console.log( `${members.length} total imported members` )
+
+	// Only people with known names
+	return members.filter( member => member.merge_fields.FNAME ? true : false )
+
 } )
 .then( knownmembers => { 
 	console.log( `${knownmembers.length} members will be transformed` )
@@ -76,7 +102,7 @@ module.exports = f => mailchimp.get( `/lists/${mainlistid}` )
 		} )
 	} )
 } )
-.then( results => console.log( 'Template generation complete', results ) )
+.then( results => console.log( 'Template generation complete', process.env.verbose ? results : '' ) )
 .catch( badresults => {
 	console.log( 'Something went wrong in the promise chain' )
 	return new Promise( ( resolve, reject ) => { 
