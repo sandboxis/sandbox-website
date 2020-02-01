@@ -8,7 +8,7 @@ const fs = require( 'fs' )
 const Mailchimp = require( 'mailchimp-api-v3' )
 
 // Import slack auto-invite
-const slack = require( './slack-invite.js' )
+// const slack = require( './slack-invite.js' )
 
 // Check for the api key
 if ( !process.env.mcapikey ) return console.log( 'No API key was found. Please add one in your .env file. See the documentation of the dotenv package.' )
@@ -90,18 +90,18 @@ module.exports = f => mailchimp.get( `/lists/${mainlistid}` )
 		} )
 	} )
 } )
-.then( members => {
-	console.log( `Adding ${members.length} members to slack` )
-	// Invite everyone who has not set their slack handle and return the member array for the next operation
-	return Promise.all( members.map( member => member.merge_fields.SLACK ? Promise.resolve( true ) : slack( member.email_address ) ) )
-} )
-.then( results => {
-	return new Promise( ( resolve, reject ) => { 
-		fs.writeFile( `${ __dirname }/../${ new Date() }-success.log.json`, JSON.stringify( results ), err => {
-			err ? reject( err ) : resolve( results )
-		} )
-	} )
-} )
+// .then( members => {
+// 	console.log( `Adding ${members.length} members to slack` )
+// 	// Invite everyone who has not set their slack handle and return the member array for the next operation
+// 	return Promise.all( members.map( member => member.merge_fields.SLACK ? Promise.resolve( true ) : slack( member.email_address ) ) )
+// } )
+// .then( results => {
+// 	return new Promise( ( resolve, reject ) => { 
+// 		fs.writeFile( `${ __dirname }/../${ new Date() }-success.log.json`, JSON.stringify( results ), err => {
+// 			err ? reject( err ) : resolve( results )
+// 		} )
+// 	} )
+// } )
 .then( results => console.log( 'Template generation complete', process.env.verbose ? results : '' ) )
 .catch( badresults => {
 	console.log( 'Something went wrong in the promise chain' )
