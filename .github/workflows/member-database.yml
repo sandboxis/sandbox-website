@@ -38,7 +38,7 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add -f docs/assets/members.json
-        git commit -am "Automated member database commit"
+        git commit -am "Automated member database commit" || exit 0
 
     - name: Push changes
       uses: ad-m/github-push-action@master
