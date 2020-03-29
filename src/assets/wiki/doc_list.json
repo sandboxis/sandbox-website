@@ -1,0 +1,19 @@
+[
+	{
+		"title": "Getting started",
+		"folder": "getting-started",
+		"documents": [
+			{
+				"title": "Upload a document",
+				"author": "Vinh-Thuyen Nguyen-Truong",
+				"lastmodified": "2020-3-29",
+				"filename": "upload-a-document.md"
+			}
+		]
+	},
+	{
+		"title": "Others",
+	       	"folder": "others",
+		"documents" : []	
+      	}
+]

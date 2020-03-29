@@ -4,6 +4,12 @@ import styles from '../css/styles.scss'
 // Grab member parser
 import * as members from './memberlist'
 
+// Wiki sidebar
+import * as docs from './wikisidebar'
+//markdowneender
+import MarkdownIt from 'markdown-it'
+import * as markdown from './markdownfile'
+
 // These are URL redirects through js because I have no control over the DNS/server
 if (document.getElementById('store')) window.location.href = 'https://sandbox-store.squarespace.com/'
 if (document.getElementById('oncommunity')) window.location.href = 'https://sandbox-store.squarespace.com/shop/on-community-a-modern-manifesto'
@@ -14,6 +20,16 @@ const resizeVideo = ( ) => {
 	if ( !video ) return
 	video.height = video.offsetWidth/1.7777777778
  }
+// Markdown Parser
+const parse = string => {
+	return new MarkdownIt('default', {
+		html: false,
+		xhtmlOut: true,
+		typographer: false,
+		linkify: false,
+		breaks: false,
+	}).render(string)
+}
 
 
 window.onload = f => { 
@@ -55,6 +71,35 @@ window.onload = f => {
 			.then( html => memberlist.innerHTML = html )
 		 } )
 	 }
+	const sidebar = document.getElementById('sidebar')
+		let element = []
+		if (sidebar) {
+			docs.get_docs()
+				.then(docs.list_content_html)	
+				.then( docs =>{
+					console.log(docs)
+					sidebar.innerHTML = docs[0]
+					return docs[1]
+				})
+				.then(  contentliststore => {
+					for(let i = 0; i < contentliststore.length ;i++){
+						element.push([])
+						for(let j = 0; j < contentliststore[i].documents.length;j++){
+							element[i].push(document.getElementById('tab-'+i+'-'+j))
+							element[i][j].onclick = function(){
+								const content = document.getElementById('content')
+								if ( content ) {
+									markdown.get(contentliststore[i].folder + '/' + contentliststore[i].documents[j].filename).
+										then(markdown => {return parse(markdown)})
+										.then(html => content.innerHTML = html)		
+								}
+	
+							}
+										}
+					}
+			}
+			)
+	}
  }
 
 // Adjust video size when the window resizes
