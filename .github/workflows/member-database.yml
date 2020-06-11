@@ -18,9 +18,9 @@ jobs:
       uses: actions/checkout@master
 
     - name: installing node 13
-        uses: actions/setup-node@v1
-        with:
-          node-version: '13.x'
+      uses: actions/setup-node@v1
+      with:
+        node-version: '13.x'
 
     - name: install dependencies
       run: npm i
