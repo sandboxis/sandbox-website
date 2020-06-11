@@ -3,6 +3,8 @@ import styles from '../css/styles.scss'
 
 // Grab member parser
 import * as members from './memberlist'
+import { initDatabaseSearch } from './database-status'
+
 
 // These are URL redirects through js because I have no control over the DNS/server
 if (document.getElementById('store')) window.location.href = 'https://sandbox-store.squarespace.com/'
@@ -55,6 +57,10 @@ window.onload = f => {
 			.then( html => memberlist.innerHTML = html )
 		 } )
 	 }
+
+	 // If we are on the database check page
+	 initDatabaseSearch()
+
  }
 
 // Adjust video size when the window resizes

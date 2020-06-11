@@ -24,6 +24,7 @@
   "dependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.0",
+    "@babel/runtime": "^7.10.2",
     "autoprefixer": "^9.4.2",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.4",
@@ -49,5 +50,9 @@
     "watch": "^1.0.2",
     "webpack": "^4.27.1",
     "webpack-cli": "^3.1.2"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.10.1",
+    "sha3": "^2.1.2"
   }
 }

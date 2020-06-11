@@ -75,6 +75,11 @@ main {
 #links {
 	margin-top: 50px;
 	text-align: center;
+	display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 
 	span {
 		color: #d0d0d0;
@@ -109,3 +114,6 @@ main {
 
 /* Bylaws */
 @import "_bylaws.scss";
+
+/* database status checker */
+@import "_database_status.scss";

@@ -4,6 +4,9 @@ require('dotenv').config( )
 // File system
 const fs = require( 'fs' )
 
+// Hashing
+const makehash = require( './hashing' )
+
 // Import api lib
 const Mailchimp = require( 'mailchimp-api-v3' )
 
@@ -43,7 +46,7 @@ module.exports = f => mailchimp.get( `/lists/${mainlistid}` )
 		} )
 	} )
 
-	console.log( 'Importing list from mailchimp' )
+	console.log( `Importing list from mailchimp in ${ requests.length } batches` )
 
 	// Grab all member data
 	return Promise.all( requests )
@@ -55,7 +58,6 @@ module.exports = f => mailchimp.get( `/lists/${mainlistid}` )
 
 	// Merge responses
 	const reducer = ( acc, curr ) => {
-		console.log( acc.length, curr.members.length )
 		return [ ...acc, ...curr.members ]
 	}
 	const members = responses.reduce( reducer, [] )
@@ -68,6 +70,7 @@ module.exports = f => mailchimp.get( `/lists/${mainlistid}` )
 
 } )
 .then( knownmembers => { 
+	
 	console.log( `${knownmembers.length} members will be transformed` )
 	// Normalise the member data for templating
 	return {
@@ -77,7 +80,10 @@ module.exports = f => mailchimp.get( `/lists/${mainlistid}` )
 			slack: member.merge_fields.SLACK,
 			bio: member.merge_fields.BIO,
 			help: member.merge_fields.HELP,
-			linkedin: member.merge_fields.LINKEDIN
+			linkedin: member.merge_fields.LINKEDIN,
+			meta: {
+				hash: makehash( member.email_address )
+			}
 		} ) ),
 		raw: knownmembers
 	}

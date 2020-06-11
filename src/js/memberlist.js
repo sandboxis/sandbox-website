@@ -65,3 +65,9 @@ export const search = ( members, search ) => (
 		return false
 	 } )
 )
+
+import { SHA3 } from 'sha3'
+export const searchByEmail = ( members, email ) => members.find( member => {
+	const hash = new SHA3( 512 ).update( email ).digest( 'hex' )
+	return member.meta.hash == hash
+} )
