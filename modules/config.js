@@ -9,7 +9,7 @@ module.exports = {
 	},
 	// System vars managing some pug elements as well as file paths
 	system: {
-		public: __dirname + '/../docs/',
+		public: process.env.NODE_ENV == 'development' ? __dirname + '/../public/' : __dirname + '/../docs/',
 		source: __dirname + '/../src/',
 		url: process.env.local ? 'http://' + ip.address() + ':3000/' : 'https://sandbox.is/',
 		gverification: undefined,
@@ -22,6 +22,3 @@ module.exports = {
 		lastname: "Network"
 	}
 }
-
-
-

@@ -19,9 +19,12 @@ export const initDatabaseSearch = async f => {
 		const query = event.target.query.value
 
 		console.log( `Searching ${ memberlist.length } members for ${query}` )
+
+		// Search first in the list with data
 		let match = await members.searchByEmail( memberlist, query )
 		if( match ) return searchresult.innerHTML = `✅ Found ${ match.name } in database! All good!`
 
+		// If that fails search by hash only
 		match = await members.searchByHash( memberHashes, query )
 
 		if( !match ) return searchresult.innerHTML = `👻 No result found! If you are a Sandbox member please contact your ambassador!`
