@@ -8,8 +8,10 @@ export const initDatabaseSearch = async f => {
 	if ( !statussearch ) return
 
 	// Get the initial member list and render it
-	const memberlist = await members.get( ).catch( f => [] )
-	console.log( memberlist[0] )
+	const [ memberlist, memberHashes ] = await Promise.all( [
+		members.get( ).catch( f => [] ),
+		members.getHashes( ).catch( f => [] )
+	] )
 
 	// manage the search bar on the member page
 	statussearch.addEventListener( 'submit', async event => { 
@@ -17,12 +19,13 @@ export const initDatabaseSearch = async f => {
 		const query = event.target.query.value
 
 		console.log( `Searching ${ memberlist.length } members for ${query}` )
-		const match = await members.searchByEmail( memberlist, query )
+		let match = await members.searchByEmail( memberlist, query )
+		if( match ) return searchresult.innerHTML = `✅ Found ${ match.name } in database! All good!`
 
-		console.log( 'Found', match )
+		match = await members.searchByHash( memberHashes, query )
 
-		if( !match ) return searchresult.innerHTML = '👻 No result found'
-		return searchresult.innerHTML = `✅ Found ${ match.name } in database!`
+		if( !match ) return searchresult.innerHTML = `👻 No result found! If you are a Sandbox member please contact your ambassador!`
+		return searchresult.innerHTML = `⚠️ Found ${ query } in database but without member data, please contact your ambassador.`
 	 } )
  }
 

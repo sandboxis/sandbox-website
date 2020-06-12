@@ -2,16 +2,13 @@
 require('dotenv').config( )
 
 // File system
-const fs = require( 'fs' )
+const { promises: fs } = require( 'fs' )
 
 // Hashing
 const makehash = require( './hashing' )
 
 // Import api lib
 const Mailchimp = require( 'mailchimp-api-v3' )
-
-// Import slack auto-invite
-// const slack = require( './slack-invite.js' )
 
 // Check for the api key
 if ( !process.env.mcapikey ) return console.log( 'No API key was found. Please add one in your .env file. See the documentation of the dotenv package.' )
@@ -66,10 +63,12 @@ module.exports = f => mailchimp.get( `/lists/${mainlistid}` )
 	console.log( `${members.length} total imported members` )
 
 	// Only people with known names
-	return members.filter( member => member.merge_fields.FNAME ? true : false )
+	const known = members.filter( member => member.merge_fields.FNAME ? true : false )
+
+	return [ known, members ]
 
 } )
-.then( knownmembers => { 
+.then( ( [ knownmembers, allmembers ] ) => { 
 	
 	console.log( `${knownmembers.length} members will be transformed` )
 	// Normalise the member data for templating
@@ -85,35 +84,19 @@ module.exports = f => mailchimp.get( `/lists/${mainlistid}` )
 				hash: makehash( member.email_address )
 			}
 		} ) ),
-		raw: knownmembers
+		raw: knownmembers,
+		hashes: allmembers.map( member => makehash( member.email_address ) )
 	}
 } )
 .then( members => { 
 	console.log( `Writing ${members.known.length} members to JSON` )
-	return new Promise( ( resolve, reject ) => {
-		fs.writeFile( `${ __dirname }/../src/assets/members.json`, JSON.stringify( members.known ), err => { 
-			err ? reject( err ) : resolve( members.raw )
-		} )
-	} )
+	return Promise.all( [
+		fs.writeFile( `${ __dirname }/../src/assets/members.json`, JSON.stringify( members.known ) ),
+		fs.writeFile( `${ __dirname }/../src/assets/hashes.json`, JSON.stringify( members.hashes ) )
+	] )
 } )
-// .then( members => {
-// 	console.log( `Adding ${members.length} members to slack` )
-// 	// Invite everyone who has not set their slack handle and return the member array for the next operation
-// 	return Promise.all( members.map( member => member.merge_fields.SLACK ? Promise.resolve( true ) : slack( member.email_address ) ) )
-// } )
-// .then( results => {
-// 	return new Promise( ( resolve, reject ) => { 
-// 		fs.writeFile( `${ __dirname }/../${ new Date() }-success.log.json`, JSON.stringify( results ), err => {
-// 			err ? reject( err ) : resolve( results )
-// 		} )
-// 	} )
-// } )
 .then( results => console.log( 'Template generation complete', process.env.verbose ? results : '' ) )
 .catch( badresults => {
 	console.log( 'Something went wrong in the promise chain' )
-	return new Promise( ( resolve, reject ) => { 
-		fs.writeFile( `${ __dirname }/../${ new Date() }-error.log.json`, JSON.stringify( badresults ), err => {
-			err ? reject( err ) : resolve( badresults )
-		} )
-	} )
+	return fs.writeFile( `${ __dirname }/../${ new Date() }-error.log.json`, JSON.stringify( badresults ) )
 } )
