@@ -9,7 +9,8 @@
     "import-mailchimp": "node modules/import-mailchimp.js",
     "build": "NODE_ENV=production webpack -p --progress",
     "update": "bash scripts/member-update.sh",
-    "deploy": "bash scripts/deploy.sh"
+    "deploy": "bash scripts/deploy.sh",
+    "baseline": "source ~/.nvm/nvm.sh && nvm use && rm -rf node_modules && rm package-lock.json && npm i"
   },
   "repository": {
     "type": "git",
