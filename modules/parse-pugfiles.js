@@ -1,23 +1,27 @@
 const fs = require( 'fs' )
+const walk = require( 'recursive-readdir' )
 
 // Grab all pug files from the root of the source directory
-const getpugs = path => {
-	return new Promise( ( resolve, reject ) => {
-		fs.readdir( path, ( err, files ) => {
-			if ( err ) return reject( err )
-			// This will return an array of file names that contain .pug
-			resolve( files.filter( file => { return file.indexOf( '.pug' ) != -1 && file.endsWith('.pug') } ) )
-		} )
+const getpugs = path => new Promise( ( res, rej ) => {
+
+	const filter = ( file, stats ) => {
+		// Do not ignore directories or pug files, 
+		return !stats.isDirectory() && !file.includes( '.pug' ) || file.includes( '/pug/' )
+	}
+	walk( path, [ filter ], ( err, files ) => {
+		if( err ) return rej( err )
+		res( files )
 	} )
-}
+
+} )
 
 // Read the contents of these pug files and return as an array
-const readdata = ( path, filename ) => {
+const readdata = filepath => {
 	return new Promise( ( resolve, reject ) => {
-		fs.readFile( path + filename, 'utf8', ( err, data ) => {
+		fs.readFile( filepath, 'utf8', ( err, data ) => {
 			if ( err ) return reject( err )
 			// Resolve with an object that contains the name and data of a file
-			resolve( { filename: filename, data: data } )
+			resolve( { filepath: filepath, data: data } )
 		} )
 	} )
 }
@@ -28,7 +32,7 @@ const returnpugs = path => {
 		// Grab all .pug files
 		getpugs( path ).then( files => {
 			// Grab the content of all .pug files
-			return Promise.all( files.map( filename => { return readdata( path, filename ) } ) )
+			return Promise.all( files.map( filepath => { return readdata( filepath ) } ) )
 		} ).then( resolve ).catch( reject )
 	} )
 }

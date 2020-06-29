@@ -3,9 +3,11 @@ const del = require( 'del' )
 const mkdirp = require( 'mkdirp' )
 
 process.on( 'unhandledRejection', ( error, promise ) => {
-		console.log( 'UPR: ' + promise + ' with ' + error )
-		console.log( error.stack )
-	} )
+	console.log( 'UPR: ' + promise + ' with ' + error )
+	console.log( error.stack )
+} )
+
+
 
 // Promise structure for writing a file to disk
 const writefile = ( where, what ) => {

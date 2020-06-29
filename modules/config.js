@@ -1,4 +1,5 @@
 const ip = require( 'ip' )
+const path = require( 'path' )
 
 module.exports = {
 	// Identity variables used in pug templates
@@ -9,8 +10,8 @@ module.exports = {
 	},
 	// System vars managing some pug elements as well as file paths
 	system: {
-		public: process.env.NODE_ENV == 'development' ? __dirname + '/../public/' : __dirname + '/../docs/',
-		source: __dirname + '/../src/',
+		public: path.normalize( process.env.NODE_ENV == 'development' ? __dirname + '/../public/' : __dirname + '/../docs/' ),
+		source: path.normalize( __dirname + '/../src/' ),
 		url: process.env.local ? 'http://' + ip.address() + ':3000/' : 'https://sandbox.is/',
 		gverification: undefined,
 		timestamp: new Date().getTime(),
