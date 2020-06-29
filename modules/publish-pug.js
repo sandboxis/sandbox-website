@@ -8,7 +8,6 @@ const site = require( __dirname + '/config' )
 // Compile pug to html
 const compilepug = filepath => { 
 	// Return a resolved promise with the file data
-	console.log( 'Render ', filepath )
 	return Promise.resolve( {
 		filepath: filepath,
 		// Compile the pug file with the site config as a local variable
