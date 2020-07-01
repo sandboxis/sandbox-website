@@ -1,0 +1,21 @@
+- const page = { title: 'Sandbox', desc: 'Sandbox community', published: '2017-01-01', url: '/', featuredimg: '/assets/sandbox-logo.svg' }
+
+//- Include the variable file with sandbocers
+include ./_sandboxers.pug
+
+doctype html
+html
+	include ../pug/_header.pug
+
+	body#meet
+		main.container
+			div.boxies
+				each boxie in sandboxers
+					div.boxie
+						p= boxie.name
+						span #{ boxie.hub } - #{ boxie.base }
+						img( src=boxie.image )
+						each link in boxie.links
+							a( href=link[1] )= link[0]
+
+	include ../pug/_footer.pug

@@ -95,7 +95,7 @@ const pluginarray = ( env, server ) => {
 // Watch for pug file changes
 const towatch = [ 'pug' ]
 
-if ( process.env.NODE_ENV == 'development' ) fs.watch( site.system.source, ( eventType, filename ) => {
+if ( process.env.NODE_ENV == 'development' ) fs.watch( site.system.source, { recursive: true },( eventType, filename ) => {
   if ( eventType != 'change' || filename.indexOf( towatch ) == -1 ) return
   if ( process.env.debug ) console.log( 'It is a pug file' )
   // Delete old build and generate pug files
