@@ -4,6 +4,9 @@
 # No not commit docs, the GH actions manages that
 docs/*
 
+# Local dev folder
+public/*
+
 # Environment variables
 .env
 

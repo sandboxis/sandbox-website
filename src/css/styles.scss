@@ -5,7 +5,6 @@ $sandbox-color: #08b7e4;
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,700');
 
 /* Global style rules */
-
 iframe { 
 	border: none;
  }
@@ -75,6 +74,11 @@ main {
 #links {
 	margin-top: 50px;
 	text-align: center;
+	display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 
 	span {
 		color: #d0d0d0;
@@ -111,4 +115,6 @@ main {
 @import "_bylaws.scss";
 
 /* Wiki */
-@import "wiki"
+@import "wiki";
+/* database status checker */
+@import "_database_status.scss";

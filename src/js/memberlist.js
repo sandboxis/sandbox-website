@@ -15,6 +15,23 @@ export const get = f => {
 		request.ontimeout = reject
 	} )
 }
+export const getHashes = f => {
+	return new Promise( ( resolve, reject ) => {
+		// Make a request
+		const request = new XMLHttpRequest()
+
+		// Grab the json
+		request.open( 'get', '/assets/hashes.json', true )
+		request.send(  )
+
+		// Handle the result
+		request.onreadystatechange = function( ) {
+			if ( this.readyState == 4 && this.status == 200 ) resolve( JSON.parse( this.responseText ) )
+			if ( this.readyState == 4 && this.status != 200 ) reject( this.responseText )
+		}
+		request.ontimeout = reject
+	} )
+}
 
 const capitalise = ( text, isaname = false ) => {
 	if ( typeof text != 'string' ) return undefined
@@ -59,9 +76,26 @@ export const search = ( members, search ) => (
 	members.filter( member => {
 		// If one of the keys contains the query keep it
 		for ( let key in member ) {
-			if ( member[key].toLowerCase().indexOf( search.toLowerCase() ) != -1 ) return true
+			if ( typeof member[key] == 'string' && member[key].toLowerCase().indexOf( search.toLowerCase() ) != -1 ) return true
 		 }
 		// If no keys match throw it out
 		return false
 	 } )
 )
+
+import { SHA3 } from 'sha3'
+export const searchByEmail = ( members, email ) => members.find( member => {
+	const hashes = [
+		new SHA3( 512 ).update( email.trim() ).digest( 'hex' ),
+		new SHA3( 512 ).update( email.trim().toLowerCase() ).digest( 'hex' )
+	]
+	return hashes.includes( member.meta.hash )
+} )
+
+export const searchByHash = ( hashes, email ) => hashes.find( hash => {
+	const hashes = [
+		new SHA3( 512 ).update( email.trim() ).digest( 'hex' ),
+		new SHA3( 512 ).update( email.trim().toLowerCase() ).digest( 'hex' )
+	]
+	return hashes.includes( hash )
+} )

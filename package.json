@@ -5,11 +5,12 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "local=true NODE_ENV=development webpack -d --progress --watch",
+    "start": "mkdir -p ./public/assets && local=true NODE_ENV=development webpack -d --progress --watch",
     "import-mailchimp": "node modules/import-mailchimp.js",
     "build": "NODE_ENV=production webpack -p --progress",
     "update": "bash scripts/member-update.sh",
-    "deploy": "bash scripts/deploy.sh"
+    "deploy": "bash scripts/deploy.sh",
+    "baseline": "source ~/.nvm/nvm.sh && nvm use && rm -rf node_modules && rm package-lock.json && npm i"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
   "dependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.0",
+    "@babel/runtime": "^7.10.2",
     "autoprefixer": "^9.4.2",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.4",
@@ -45,10 +47,13 @@
     "request": "^2.88.0",
     "request-promise-native": "^1.0.5",
     "sass-loader": "^7.1.0",
-    "shelljs": "^0.8.3",
     "style-loader": "^0.23.1",
     "watch": "^1.0.2",
     "webpack": "^4.27.1",
     "webpack-cli": "^3.1.2"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.10.1",
+    "sha3": "^2.1.2"
   }
 }

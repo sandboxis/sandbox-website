@@ -1,0 +1,17 @@
+- const page = { title: 'Member Database', desc: 'Sandbox member database', published: '2017-12-21', url: '/', featuredimg: '/assets/sandbox-logo.svg' }
+doctype html
+html
+	include pug/_header.pug
+	body#databasecheck
+		main.container
+			div.row#intro
+				a( href=site.system.url )
+					img.col.m4.offset-m4.s10.offset-s1#logo( src=site.system.url + "assets/sandbox-logo.svg" )
+				p.col.m8.offset-m2.s12.flow-text This page allows you to check if your email is registered in the global membership database.
+				p.col.m8.offset-m2.s12.flow-text The search function is encrypted, nobody can see your email address.
+				div.col.m8.offset-m2.s12.flow-text#searchresults
+					form#statussearch.col.s12.m12.l12
+						input#query.col.s12.m8.l8( type="text" placeholder="Input your email")
+						input( type='submit' value="Check if I'm in the database" ).col.s12.m4.l4
+					div.col.s12.m12.l12#searchresult
+	include pug/_footer.pug
