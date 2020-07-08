@@ -6,12 +6,7 @@ html
 		main.containteir
 			div.row#introcontainer
 				a( href=site.system.url )
-				img.col.m4.offset-m4.s10.offset-s1#logo( src=site.system.url + "assets/sandbox-logo.svg" )
-				p.col.m8.offset-m2.s12.flow-text#description 
-				div.col.m8.offset-m2.s12.flow-text#memberdata
-					form#wikisearch.col.s12.m12.l12
-						input#query.col.s12.m10.l10( type="text" placeholder="Search is not working yet...")
-						input( type='submit' value="search" ).col.s12.m2.l2
+				img( src=site.system.url + "assets/sandbox-logo.svg" )
 			div#sidebar
 			div#content
 	include pug/_footer.pug

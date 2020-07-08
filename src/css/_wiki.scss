@@ -1,8 +1,8 @@
-#wiki {	
-	#intro{
+#wiki {
+	#intro {
 		position: relative;
-	}	
-	#sidebar {	
+	}
+	#sidebar {
 		input {
 			position: relative;
 			opacity: 0;
@@ -13,86 +13,68 @@
 		height: 100%;
 		top: 0;
 		left: 0;
-		z-index:1;
-		background: #CCCCCC;
+		z-index: 1;
+		background: #cccccc;
 		font-size: 13 px;
 		overflow-x: hidden;
-		p {	
-			text-decoration: none;
-			font-size: 13px;
-			color: #000000;
-			padding-left: 5px;
-			display: block;
-		}
-		label {
-			position: relative;
-			right: 0;
-			top: 0;
-			display: block;
-			font-weight: bold;
-			padding-left: 5px;
+		/* Style the buttons that are used to open and close the accordion panel */
+		.accordion {
+			background-color: rgb(190, 190, 190);
+			color: #444;
 			cursor: pointer;
+			padding: 18px;
+			width: 100%;
+			text-align: left;
+			border: none;
+			outline: none;
+			transition: 0.4s;
+		}
+		.item {
+			background-color: #eee;
+			lighting-color: #ccc;
+			color: #444;
+			cursor: pointer;
+			padding: 18px;
+			width: 100%;
+			text-align: left;
+			border: none;
+			outline: none;
+			transition: 0.4s;
+		}
+		/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+		.active,
+		.accordion:hover {
+			background-color: #ccc;
 		}
 
-		.tab-content {
-			max-height: 0;
+		/* Style the accordion panel. Note: hidden by default */
+		.panel {
+			background-color: #eee;
 			overflow: hidden;
-			-webkit-transition: max-height .35s;
-			-o-transition: max-height .35s;
-			transition: max-height .35s;
-		}
-
-		.tab-content p {
-			margin: 5 px;
-		}
-
-		/* :checked */
-
-		input:checked ~ .tab-content {
-			max-height: 100em;
-		}
-
-		/* Icon */
-
-		label::after {
-			position: absolute;
-			right: 5px;
-			top: 0;
-			display: block;
-			width: 5 px;
-			height: 5 px;	
-			-webkit-transition: all .35s;
-			-o-transition:all .35s;
-			transition: all .35s;
-
-		}	
-		input {
-			&[type=checkbox] + label::after {
-				content: "+";
-			}
-			&[type=checkbox]:checked + label::after {
-				transform: rotate(315deg);
-			}
 		}
 	}
+	@media (max-width: 800px) {
+		#sidebar {
+			height: auto;
+			width: 100%;
+			position: static;
+		}
+		#main {
+			padding-left: 0;
+		}
+	}
+	img {
+		display: block;
+		text-indent: -9999px;
+		width: 400px;
+		height: auto;
+		background-size: 100px 82px;
+	}
+
 	#content {
 		padding: 10 px;
 		margin-left: 25%;
 		height: auto;
 		margin-right: 15%;
 	}
-
-	@media (max-width:800px){
-		#sidebar{
-			height: auto;
-			width: 100%;
-			position: static;
-		}
-		#main{
-			padding-left: 0;
-		}
-	}
-
 }
-
-

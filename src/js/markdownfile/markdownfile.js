@@ -1,5 +1,3 @@
-import MarkdownIt from 'markdown-it'
-//const MarkdownIt = require('markdown-it');
 export const get = f => {
 	return new Promise( ( resolve, reject) => {
 		// Make a request

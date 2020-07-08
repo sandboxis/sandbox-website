@@ -11,8 +11,8 @@ import { initVideoResize } from './video-resize'
 // Wiki sidebar
 import * as docs from './wikisidebar'
 //markdowneender
-import MarkdownIt from 'markdown-it'
-import * as markdown from './markdownfile'
+import * as markdown from './markdownfile/markdownfile'
+import * as parse from './markdownfile/parse'
 
 // These are URL redirects through js because I have no control over the DNS/server
 if (document.getElementById('store')) window.location.href = 'https://sandbox-store.squarespace.com/'
@@ -23,16 +23,7 @@ const resizeVideo = () => {
 	if (!video) return
 	video.height = video.offsetWidth / 1.7777777778
 }
-// Markdown Parser
-const parse = string => {
-	return new MarkdownIt('default', {
-		html: false,
-		xhtmlOut: true,
-		typographer: false,
-		linkify: false,
-		breaks: false,
-	}).render(string)
-}
+
 window.onload = f => {
 
 	// init video resizing
@@ -80,7 +71,7 @@ window.onload = f => {
 							const content = document.getElementById('content')
 							if (content) {
 								markdown.get(contentliststore[i].folder + '/' + contentliststore[i].documents[j].filename).
-									then(markdown => { return parse(markdown) })
+									then(markdown => { return parse.parse(markdown) })
 									.then(html => content.innerHTML = html)
 							}
 
@@ -98,5 +89,3 @@ initMemberDatabase()
 
 // If we are on the database check page
 initDatabaseSearch()
-
- }
