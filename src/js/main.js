@@ -10,7 +10,7 @@ import { initVideoResize } from './video-resize'
 
 // Wiki sidebar
 import * as docs from './wikisidebar'
-//markdowneender
+//markdown render
 import * as markdown from './markdownfile/markdownfile'
 import * as parse from './markdownfile/parse'
 
@@ -52,9 +52,11 @@ window.onload = f => {
 				.then(html => memberlist.innerHTML = html)
 		})
 	}
+	// If we are on the wiki page, we load the data and display to in the sidebar
 	const sidebar = document.getElementById('sidebar')
 	let element = []
 	if (sidebar) {
+		// Get documents using get_docs function in wikisider.js
 		docs.get_docs()
 			.then(docs.list_content_html)
 			.then(docs => {
@@ -68,6 +70,7 @@ window.onload = f => {
 					for (let j = 0; j < contentliststore[i].documents.length; j++) {
 						element[i].push(document.getElementById('tab-' + i + '-' + j))
 						element[i][j].onclick = function () {
+							// Convert markdown format to HTML and put it inside content
 							const content = document.getElementById('content')
 							if (content) {
 								markdown.get(contentliststore[i].folder + '/' + contentliststore[i].documents[j].filename).
