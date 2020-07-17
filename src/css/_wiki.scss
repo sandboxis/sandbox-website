@@ -1,0 +1,80 @@
+#wiki {
+	#intro {
+		position: relative;
+	}
+	#sidebar {
+		input {
+			position: relative;
+			opacity: 0;
+			z-index: -1;
+		}
+		position: fixed;
+		width: 220px;
+		height: 100%;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		background: #cccccc;
+		font-size: 13 px;
+		overflow-x: hidden;
+		/* Style the buttons that are used to open and close the accordion panel */
+		.accordion {
+			background-color: rgb(190, 190, 190);
+			color: #444;
+			cursor: pointer;
+			padding: 18px;
+			width: 100%;
+			text-align: left;
+			border: none;
+			outline: none;
+			transition: 0.4s;
+		}
+		.item {
+			background-color: #eee;
+			lighting-color: #ccc;
+			color: #444;
+			cursor: pointer;
+			padding: 18px;
+			width: 100%;
+			text-align: left;
+			border: none;
+			outline: none;
+			transition: 0.4s;
+		}
+		/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+		.active,
+		.accordion:hover {
+			background-color: #ccc;
+		}
+
+		/* Style the accordion panel. Note: hidden by default */
+		.panel {
+			background-color: #eee;
+			overflow: hidden;
+		}
+	}
+	@media (max-width: 800px) {
+		#sidebar {
+			height: auto;
+			width: 100%;
+			position: static;
+		}
+		#main {
+			padding-left: 0;
+		}
+	}
+	img {
+		display: block;
+		text-indent: -9999px;
+		width: 400px;
+		height: auto;
+		background-size: 100px 82px;
+	}
+
+	#content {
+		padding: 10 px;
+		margin-left: 25%;
+		height: auto;
+		margin-right: 15%;
+	}
+}

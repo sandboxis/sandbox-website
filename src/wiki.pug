@@ -1,0 +1,12 @@
+- const page = { title: 'Sandbox Wiki', desc: 'Sandbox community', published: '2017-01-01', url: '/', featuredimg: '/assets/sandbox-logo.svg' }
+doctype html
+html
+	include pug/_header.pug
+	body#wiki
+		main.containteir
+			div.row#introcontainer
+				a( href=site.system.url )
+				img( src=site.system.url + "assets/sandbox-logo.svg" )
+			div#sidebar
+			div#content
+	include pug/_footer.pug
