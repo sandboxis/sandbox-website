@@ -1,3 +1,4 @@
+// this fucntion access storage and load the documents from it
 export const get_docs = f => {
 	return new Promise( ( resolve, reject ) => {
 		// Make a request
@@ -15,6 +16,7 @@ export const get_docs = f => {
 		request.ontimeout = reject
 	} )
 }
+// This function will create html that is the content list for sidebar
 export const list_content_html = list_of_content => {
 	if ( ! typeof list_of_content == 'object' ) return console.log( 'List of content json is not a json. Wut?', list_of_content )
 	let html = ''
