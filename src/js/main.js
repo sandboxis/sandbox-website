@@ -6,6 +6,7 @@ import * as members from './memberlist'
 import { initDatabaseSearch } from './database-status'
 import { initMemberDatabase } from './database-list'
 import { initVideoResize } from './video-resize'
+import { initMeetASandboxer } from './meet-a-sandboxer'
 
 
 // These are URL redirects through js because I have no control over the DNS/server
@@ -24,5 +25,8 @@ window.onload = f => {
 
 	// If we are on the database check page
 	initDatabaseSearch()
+
+	// If we are on the meet a sandboxer page
+	initMeetASandboxer()
 
  }
