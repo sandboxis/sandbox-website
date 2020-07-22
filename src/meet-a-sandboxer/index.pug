@@ -8,9 +8,11 @@ html
 	include ../pug/_header.pug
 
 	body#meet
-		main.container
-			h1 Meet a Sandboxer
+		main
+			a( href=site.system.url )
+				img#logo( src=site.system.url + "assets/sandbox-logo.svg" )
 			p.intro Click any Sandboxer to read their bio and see links to their projects.
+
 
 			div.boxies
 				each boxie, index in sandboxers
