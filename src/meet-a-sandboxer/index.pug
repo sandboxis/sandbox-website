@@ -11,18 +11,20 @@ html
 		main
 			a( href=site.system.url )
 				img#logo( src=site.system.url + "assets/sandbox-logo.svg" )
-			p.intro Click any Sandboxer to read their bio and see links to their projects.
+			p.intro Click any of the featured Sandboxer profiles to read their bio and see links to their projects.
 
 
 			div.boxies
 				each boxie, index in sandboxers
 					div.boxie( id='boxie' + index )
 						h2= boxie.name
-						h3 #{ boxie.hub } - #{ boxie.base }
+						h3 #{ boxie.hub } Hub 
+
 						img( src='/assets/meet-a-sandboxer/' + boxie.image )
 						p.links
 							each link in boxie.links
 								a( target='_blank' href=link[1] )= link[0]
+						h4 Currently in #{ boxie.base }
 						p.bio= boxie.bio
 						p.backbutton ◀️ Back to overview
 
