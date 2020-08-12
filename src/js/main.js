@@ -11,6 +11,7 @@ import { initMeetASandboxer } from './meet-a-sandboxer'
 
 // These are URL redirects through js because I have no control over the DNS/server
 if (document.getElementById('store')) window.location.href = 'https://sandbox-store.squarespace.com/'
+if (document.getElementById('census')) window.location.href = 'https://www.notion.so/2020-Sandbox-Community-Census-e88781767f074d0380cb0277607cc289'
 if (document.getElementById('oncommunity')) window.location.href = 'https://sandbox-store.squarespace.com/shop/on-community-a-modern-manifesto'
 
 
