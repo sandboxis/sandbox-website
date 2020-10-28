@@ -36,6 +36,7 @@
     "dotenv": "^6.2.0",
     "file-watcher-webpack-plugin": "^1.1.0",
     "ip": "^1.1.5",
+    "jstransformer-markdown-it": "^2.1.0",
     "mailchimp-api-v3": "^1.12.1",
     "mkdirp": "^0.5.1",
     "ncp": "^2.0.0",
