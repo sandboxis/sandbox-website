@@ -10,9 +10,12 @@ import { initMeetASandboxer } from './meet-a-sandboxer'
 
 
 // These are URL redirects through js because I have no control over the DNS/server
-if (document.getElementById('store')) window.location.href = 'https://sandbox-store.squarespace.com/'
-if (document.getElementById('census')) window.location.href = 'https://www.notion.so/2020-Sandbox-Community-Census-e88781767f074d0380cb0277607cc289'
-if (document.getElementById('oncommunity')) window.location.href = 'https://sandbox-store.squarespace.com/shop/on-community-a-modern-manifesto'
+const id = d => document.getElementById( d )
+const redirect = url => window.location.href = url
+if ( id('store') ) redirect( 'https://sandbox-store.squarespace.com/' )
+if ( id('census') ) redirect( 'https://www.notion.so/2020-Sandbox-Community-Census-e88781767f074d0380cb0277607cc289' )
+if ( id('oncommunity') ) redirect( 'https://sandbox-store.squarespace.com/shop/on-community-a-modern-manifesto' )
+if ( id('communityresources') ) redirect( 'https://www.notion.so/Sandbox-Community-Member-Resources-1f834f39288946ac82b397d244d63161' )
 
 
 
