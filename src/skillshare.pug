@@ -1,0 +1,12 @@
+- const page = { title: 'Home', desc: 'Home page', published: '2017-01-01', url: '/', featuredimg: '/assets/sandbox-logo.svg' }
+doctype html
+html
+  include pug/_header.pug
+  body#skillshare
+    main.container
+      div.row#intro
+        a( href=site.system.url )
+          img.col.m6.offset-m3.s10.offset-s1#logo( src=site.system.url + "assets/sandbox-logo.svg" )
+        input#password( type='password' placeholder='Skillshare Password' )
+        
+  include pug/_footer.pug
