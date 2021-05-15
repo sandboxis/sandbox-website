@@ -18,6 +18,7 @@ export default function handleRedirects( ) {
 	if ( id('gratitude') ) redirect( 'https://www.notion.so/Sandbox-Journeys-WG-2036dc10a35c4664872b0a8f54cc04af' )
 	if ( id('zoom') ) redirect( 'https://us02web.zoom.us/j/8976969435' )
 	if ( id('knowledge') ) redirect( 'https://www.notion.so/Sandbox-Community-Knowledge-Center-b304bddb1c094578a1023305a9192443' )
+	if ( id('ambassadors') ) redirect( 'https://www.notion.so/Sandbox-Ambassadors-Resources-518059e93570407fa25c2c149aebc0ae' )
 	if ( id( 'skillshare' ) ) {
 		id( 'password' ).addEventListener( 'keyup', ( { target } ) => {
 
