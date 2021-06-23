@@ -23,7 +23,7 @@ export default function handleRedirects( ) {
 		id( 'password' ).addEventListener( 'keyup', ( { target } ) => {
 
 			// Look, they asked and I provided ok.
-			passwordProtect( target.value, 'viewskills', 'https://www.notion.so/Sandbox-Skillshare-bbad6dac141a4be6be58fabb97fa76b0' )
+			passwordProtect( target.value, 'viewskills', 'https://www.notion.so/sandboxdashboard/Sandbox-Skillshare-ae70114cd7094ccba310bd48b417a902' )
 			
 		} )
 	}
