@@ -1,0 +1,20 @@
+#amsterdam {
+
+	h1, h2, h3 {
+		margin-top: 3rem;
+	}
+	
+	p, li {
+		line-height: 1.6rem;
+	}
+
+	.button {
+		background: $sandbox-color;
+		color: white;
+		border-radius: 8px;
+		padding: .5rem 1rem;
+		margin-top: 1rem;
+		display: inline-block;
+	}
+
+}

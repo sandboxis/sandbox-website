@@ -1,0 +1,41 @@
+- const page = { title: 'Sandbox Amsterdam', desc: 'The Sandbox network Amsterdam hub.', published: '2021-10-08', url: '/', featuredimg: '/assets/sandbox-logo.svg' }
+doctype html
+html
+	include pug/_header.pug
+	body#amsterdam.page
+		main.container
+			div.row
+				div.col.m6.offset-m3.s10.offset-s1
+					a( href=site.system.url )
+						img.col.s12#logo( src=site.system.url + "assets/sandbox-logo.svg" )
+					h2.center Sandbox Amsterdam
+
+					p The Amsterdam hub is open to anyone in the Netherlands. You do not need to be Dutch, but we do insist you primarily live here.
+
+					h3.center What are we like?
+					p The Amsterdam hub is a small but tight-knit group that hosts local dinners, workshops and retreats. We are also very active visitors of retreats all over the world and enjoy connecting with the Sandbox family wherever we go.
+					p We like to ask big questions about who we are, who we'd like to become, and how to have a positive impact on the world.
+					p We support each other professionally as well as personally. No matter if you are looking for an accountant, a good resteaurant or a book recommendation, we have each other covered.
+
+
+					h3.center What do we do?
+					p Recent events include small group dinners, an offline no-phone retreat in a repurposed chapel in the south of the country and a health & sauna retreat in the center of the country.
+					p Recent workshops cover a wide variety of topics, from an introduction to the European patent system to change management in professional teams to fermenting vegetables at home.
+
+					h3.center Applying to the hub
+					p Our application process isn't about judging whether you are "good enough" but rather to see if you feel at home in our group.
+
+					p The process is as follows:
+
+					ol
+						li Fill out our short application form
+						li Be invited for a coffee or online conversation
+						li Get invited to a local event like a dinner
+						li Join a retreat (local or international)
+						li Create a "WOW", a creative project that showcases who you are or what you want to contribute to the community
+					
+					div.center
+						a( href="https://forms.gle/177ZhrV2PByWxSS69" target="_blank" ).button.center Fill out the application form
+
+
+	include pug/_footer.pug
