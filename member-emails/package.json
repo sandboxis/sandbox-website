@@ -1,0 +1,14 @@
+{
+  "name": "member-emails",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mentor Palokaj <mentor@palokaj.co> (http://github.com/actuallymentor)",
+  "license": "MIT",
+  "dependencies": {
+    "papaparse": "^5.3.1"
+  }
+}
