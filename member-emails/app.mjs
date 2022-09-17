@@ -1,46 +1,37 @@
-import { readCsv } from './modules/csv.mjs'
+import { map_csv_to_forwards } from './modules/csv.mjs'
+import { register_forward_with_improvmx } from './modules/improvmx_api.mjs'
+import { throttle_and_retry, log, verbose, development, trial_run } from './modules/helpers.mjs'
+import { get_member_export_csv } from './modules/unaty.mjs'
 
-async function registerForwardWithImprovMX( apiKey, alias='', to='', logs=[] ) {
+/* ///////////////////////////////
+// Load Unaty emails and set them
+// to ImprovMX
+// /////////////////////////////*/
+const error_logs = []
 
+try {
 
-	try {
+    // Load the new csv
+    const temp_csv_path = `.latest.members.csv`
+    await get_member_export_csv( temp_csv_path ).catch( e => {
+        if( !development ) throw e
+        log( `Failed to get latest csv, running with past one.` )
+    } )
 
-		// Naive validation
-		if( !to.includes( '@' ) ) throw new Error( `Not an email` )
-		if( !alias.length ) throw new Error( 'No alias specified' )
+    let todos = await map_csv_to_forwards( temp_csv_path )
+    if( trial_run ) {
+        todos = [ todos[0] ]
+        log( `[ ${ new Date().toLocaleTimeString() } ] Only running one forward: `, todos )
+    }
 
-		// Register with api
-		const options = {
-			method: 'POST',
-			headers:{
-				Authorization: `Basic ${ apiKey }`,
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify( {
-				alias: alias,
-				forward: to
-			} )
-		}
-		const domain = `member.sandbox.is`
-		const endpoint = `https://improvmx.com/api/domains/${domain}/aliases`
-		const res = await fetch( endpoint, options )
-			.then( r => r.json() )
-			.catch( e => {
+    const forward_creation_queue = todos.map( ( { email, handle }, i ) => () => register_forward_with_improvmx( handle, email,error_logs, `entry ${ i } of ${ todos.length }`, verbose ) )
 
-				// If create failed try update
-				const opt = { ...options, method: 'PUT' }
-				return fetch( endpoint, opt ).then( r => r.json() )
+    log( `Starting throttled execution of ${ forward_creation_queue.length } entries` )
 
-			} )
+	await throttle_and_retry( forward_creation_queue, 1, `forward_create`, 5, 60 )
+    log( `✅ Forward creations complete` )
 
-
-	} catch( e ) {
-
-		logs.push( {
-			source: `From ${ alias } to ${ to }`,
-			error: e.message
-		} )
-
-	}
-
+} catch( e ) {
+    log( `🛑 Error ocurred:`, e )
+    log( `Logs: `, error_logs )
 }

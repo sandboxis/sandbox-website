@@ -21,3 +21,16 @@ export const writeCsv = async ( path, data ) => {
 	await fs.writeFile( path, csv )
 
 }
+
+export async function map_csv_to_forwards( csv_path ) {
+
+	const members = await readCsv( csv_path )
+	console.log( `${ members.length } members loaded from ${ csv_path }` )
+	const has_handle_and_email = members.filter( member => !!member[ 'Account Email' ].includes( '@' ) && !!member.Handle ).filter( member => !member[ 'Account Email' ].includes( '@anonymous.getunaty.com' ) )
+	console.log( `${ has_handle_and_email.length } members have email and handle (${ members.length - has_handle_and_email.length } removed)` )
+	return has_handle_and_email.map( member => ( {
+		email: member[ 'Account Email' ],
+		handle: member.Handle
+	} ) )
+
+}
