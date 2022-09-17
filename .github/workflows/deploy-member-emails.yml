@@ -18,18 +18,18 @@ jobs:
       uses: actions/checkout@master
 
     - name: Read .nvmrc
-        run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
-        id: nvm
-        working-directory: member-emails
+      run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
+      id: nvm
+      working-directory: member-emails
 
     - name: Set Node.js (.nvmrc)
-        uses: actions/setup-node@v1
-        with:
-          node-version: "${{ steps.nvm.outputs.NVMRC }}"
+      uses: actions/setup-node@v1
+      with:
+        node-version: "${{ steps.nvm.outputs.NVMRC }}"
 
     - name: Install dependencies
-        run: npm i
-        working-directory: member-emails
+      run: npm i
+      working-directory: member-emails
 
     - name: Create environment files
       working-directory: member-emails
