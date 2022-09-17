@@ -2,7 +2,7 @@ name: Deploy member email forwards
 
 on:
   schedule:
-    - cron: '14 30 * * *'
+    - cron: '30 14 * * *'
   push:
     branches:
       - master
