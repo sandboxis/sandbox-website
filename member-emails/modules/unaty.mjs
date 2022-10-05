@@ -2,7 +2,7 @@ import fetch from 'isomorphic-fetch'
 import { promises as fs } from 'fs'
 import { log } from './helpers.mjs'
 import 'dotenv/config'
-const { unaty_bearer_token } = process.env
+const { unaty_bearer_token, local } = process.env
 
 export async function get_member_export_csv( save_path ) {
 
@@ -17,16 +17,16 @@ export async function get_member_export_csv( save_path ) {
 
     log( `Calling ${ url } with `, options )
     const { data, ...response } = await fetch( url, options ).then( res => {
-        log( `Request status coe: ${ res.status }` )
+        log( `Request status code: ${ res.status }` )
         return res.json()
     } )
     if( !data?.url ) {
-        log( `Error getting url, response data: `, data, response )
+        if( local ) log( `Error getting url, response data: `, data, response )
         throw new Error( `Error fetching new csv` )
     }
 
     // Load remote csv
-    log( `Fetching new CSV at ${ data.url }` )
+    if( local ) log( `Fetching new CSV at ${ data.url }` )
     const csv = await fetch( data.url ).then( res => res.text() )
 
     // Write csv to file
