@@ -19,9 +19,10 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '13.x'
+        cache: "npm"
 
     - name: install dependencies
-      run: npm i
+      run: npm ci
 
     - name: Build website files
       env:
@@ -29,14 +30,16 @@ jobs:
       run: npm run build
 
 
-    - name: Commit new files
+    - name: Commit new files if needed
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        REPO_NAME: ${{ github.repository }}
+        USERNAME: ${{ github.repository_owner }}
       run: |
+        git checkout main
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add -f docs/*
-        git commit -am "Automated website commit"
-
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        git commit -am "🤖 Automated docs file compilation" || exit 0
+        git remote set-url --push origin https://$USERNAME:$GITHUB_TOKEN@github.com/$REPO_NAME
+        git push
