@@ -1,0 +1,51 @@
+name: Build and Deploy member database
+
+on:
+  schedule:
+    - cron: '4 20 * * *'
+  push:
+    branches:
+      - master
+    paths:
+      - 'modules/import-mailchimp.js'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: installing node 13
+      uses: actions/setup-node@v1
+      with:
+        node-version: '13.x'
+
+    - name: install dependencies
+      run: npm i
+
+    - name: Build member files
+      env:
+        NODE_ENV: production
+        mcapikey: ${{ secrets.MC_API_KEY }}
+        slackkey: ${{ secrets.SLACK_API_KEY }}
+        mainlistid: 'aac044fbe7'
+        mainlistname: 'Sandbox All'
+      run: |
+        node modules/cron.js
+        echo "copy json to docs"
+        cp src/assets/members.json docs/assets/members.json
+        git --no-pager diff src/assets/members.json docs/assets/members.json
+
+    - name: Commit new files
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add -f docs/assets/members.json
+        git commit -am "Automated member database commit" || exit 0
+
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
