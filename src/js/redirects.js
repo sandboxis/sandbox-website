@@ -15,6 +15,7 @@ export default function handleRedirects( ) {
 	if ( id('logo') ) redirect( 'https://sandbox-brand.smvi.co/' )
 	if ( id('brand') ) redirect( 'https://sandbox-brand.smvi.co/' )
 	if ( id('web3') ) redirect( 'https://www.notion.so/sandboxdashboard/Web3-Sandbox-0a7f44bd53104309a8494f614d021019' )
+	if ( id('deck') ) redirect( 'https://docs.google.com/presentation/d/1XULLg2aFZf37D3Kdk6wUIGCxaVW2hkgxIHPaBdmUcYQ' )
 	if ( id('census') ) redirect( 'https://www.notion.so/2020-Sandbox-Community-Census-e88781767f074d0380cb0277607cc289' )
 	if ( id('oncommunity') ) redirect( 'https://sandbox-store.squarespace.com/shop/on-community-a-modern-manifesto' )
 	if ( id('communityresources') ) redirect( 'https://www.notion.so/Sandbox-Community-Member-Resources-369464787b5c4de7b9fb72a9d2fa6a4c' )
